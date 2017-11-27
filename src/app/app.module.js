@@ -1,5 +1,5 @@
 angular
-  .module('angular-pit-table', ['ui.router', 'restangular'])
+  .module('angular-pit-table', ['ui.router'])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode(true).hashPrefix('!');
     $urlRouterProvider.otherwise('/demo');
@@ -12,7 +12,4 @@ angular
   })
   .config(function (pitTableProvider, ANGULAR_PIT_TABLE) {
     pitTableProvider.setOptions(ANGULAR_PIT_TABLE);
-  })
-  .config(function (RestangularProvider, ENV) {
-    RestangularProvider.setBaseUrl(ENV.backendUrl);
   });

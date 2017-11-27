@@ -1,8 +1,14 @@
 angular
   .module('angular-pit-table')
-  .component('pitTable', {
+  .component('ptable', {
     templateUrl: 'app/components/pit_table/pit-table.html',
+    bindings: {
+      ptColumns: '<',
+      ptParameters: '<',
+      ptData: '<'
+    },
     controller: function (pitTable) {
-      this.uiFramework = pitTable.uiFramework;
+      var ctrl = this;
+      ctrl.uiFramework = pitTable.uiFramework;
     }
   });
