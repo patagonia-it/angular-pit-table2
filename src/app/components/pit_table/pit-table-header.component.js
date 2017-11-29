@@ -8,7 +8,7 @@ angular
     bindings: {
       column: '<'
     },
-    controller: function () {
+    controller: function ($rootScope) {
       var ctrl = this;
 
       ctrl.columnOrder = function (column) {
@@ -26,7 +26,8 @@ angular
             }
           }
         });
-        ctrl.ptableCtrl.loadData();
+
+        ctrl.ptableCtrl.ptParameters.loadData();
       };
 
       ctrl.thIconClass = function (sort) {
@@ -38,5 +39,7 @@ angular
           };
         }
       };
+
+      
     }
   });

@@ -5,14 +5,28 @@ angular
     bindings: {
       ptColumns: '<',
       ptParameters: '<',
-      ptData: '='
+      ptData: '<'
     },
     controller: function (pitTable, $log, $http, ENV) {
       var ctrl = this;
       ctrl.uiFramework = pitTable.uiFramework;
 
-      ctrl.loadData = function() {
-        $http.get(ENV.backendUrl + ctrl.ptParameters.url).then(function (response) {
+      ctrl.startRequest = function() {
+      	var sort = ctrl.getSort();
+
+      	var object = {
+      		url: ENV.backendUrl + ctrl.ptParameters.url,
+      		method: ctrl.ptParameters.method
+      	};
+
+      	if(ctrl.ptParameters.inBody) {
+      		object.data = ctrl.ptParameters.params;
+
+      	}else{
+      		object.params = angular.extend({}, ctrl.ptParameters.params, sort);
+      	}
+
+      	$http(object).then(function (response) {
           ctrl.ptData = response.data;
         }, function () {
           $log.error('Ha ocurrido un error al intentar obtener la información.');
@@ -20,11 +34,32 @@ angular
       };
 
       ctrl.$onInit = function () {
-        ctrl.loadData();
+
+      	ctrl.startRequest();
+
+
+        ctrl.ptParameters.loadData = function () {
+		  	ctrl.startRequest();
+	  	}
+
       };
 
+
       ctrl.$onChanges = function (changes) {
-        $log.info(changes);
+
       };
+
+      ctrl.getSort = function () {
+        var sort = {};
+        sort.sort = [];	
+        
+        angular.forEach(ctrl.ptColumns, function (ptColumn) {          
+          if(ptColumn.sort == 'asc' || ptColumn.sort == 'desc') {           	
+          	sort.sort.push(ptColumn.id +','+ ptColumn.sort);
+          }
+        });
+
+        return sort;
+      };     
     }
   });

@@ -12,10 +12,12 @@ angular
         PTColumnBuilder.newColumn('userId').withName('Usuario')
       ];
 
-      ctrl.ptParams = PTParamsBuilder.newParams().withUrl('/posts').withParam('userId', 10).withParam('id', 92).withHateoas('users').withMethod('GET', false);
+      ctrl.ptParams = PTParamsBuilder.newParams().withUrl('/posts').withParam('userId', 1).withHateoas('users').withMethod('GET', false);
 
       ctrl.test = function () {
-        ctrl.ptParams = angular.extend({}, ctrl.ptParams.withParam('hlala', 'aljksdkjash'));
+        //ctrl.ptParams = angular.extend({}, ctrl.ptParams.withParam('hlala', 'aljksdkjash'));
+        ctrl.ptParams.loadData();
+        console.log(ctrl.ptColumns);
       };
     }
   });

@@ -1,7 +1,7 @@
 angular
   .module('angular-pit-table')
   .factory('PTColumnBuilder', ptColumnBuilder)
-  .factory('PTParamsBuilder', ptParamsBuilder);
+  .factory('PTParamsBuilder', ['$rootScope', ptParamsBuilder]);
 
 function ptColumnBuilder() {
   var PTColumn = {
@@ -52,7 +52,7 @@ function ptColumnBuilder() {
   };
 }
 
-function ptParamsBuilder() {
+function ptParamsBuilder($rootScope) {
   var PTParams = {
     withParam: function (key, value) {
       if (!angular.isString(key) || key === '') {
@@ -100,9 +100,6 @@ function ptParamsBuilder() {
       }
       this.params.projection = projection;
       return this;
-    },
-    loadData: function () {
-
     }
   };
 
