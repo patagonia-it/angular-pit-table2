@@ -1,3 +1,19 @@
 body {
   background-color: lightgrey;
 }
+
+ptable > .table > thead > tr > th {
+  padding: 0;
+}
+
+ptable > .table > thead > tr > th.sortable {
+  cursor: pointer;
+}
+
+ptable > .table > thead > tr > th > pthd, ptable > .table > thead > tr > th > pthd > span {
+  display: block;
+}
+
+ptable > .table > thead > tr > th > pthd > span {
+  padding: 8px;
+}
