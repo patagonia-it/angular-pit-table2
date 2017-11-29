@@ -20,6 +20,7 @@ angular
       if (option.uiFramework && (option.uiFramework === 'bootstrap' || option.uiFramework === 'material')) {
         this.uiFramework = option.uiFramework;
       }
+      this.method = defaultOptions.method;
     }
 
     this.$get = function () {

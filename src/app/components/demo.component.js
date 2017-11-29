@@ -2,7 +2,7 @@ angular
   .module('angular-pit-table')
   .component('demo', {
     templateUrl: 'app/components/demo.html',
-    controller: function ($http, ENV, $log, PTColumnBuilder, PTParamsBuilder) {
+    controller: function (PTColumnBuilder, PTParamsBuilder) {
       var ctrl = this;
 
       ctrl.ptColumns = [
@@ -13,11 +13,5 @@ angular
       ];
 
       ctrl.ptParams = PTParamsBuilder.newParams().withUrl('/posts').withParam('userId', 1).withHateoas('users').withMethod('GET', false);
-
-      ctrl.test = function () {
-        //ctrl.ptParams = angular.extend({}, ctrl.ptParams.withParam('hlala', 'aljksdkjash'));
-        ctrl.ptParams.loadData();
-        console.log(ctrl.ptColumns);
-      };
     }
   });

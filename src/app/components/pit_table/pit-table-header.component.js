@@ -8,7 +8,7 @@ angular
     bindings: {
       column: '<'
     },
-    controller: function ($rootScope) {
+    controller: function () {
       var ctrl = this;
 
       ctrl.columnOrder = function (column) {
@@ -24,6 +24,7 @@ angular
             } else {
               ptColumn.sort = 'natural';
             }
+            return;
           }
         });
 
@@ -39,7 +40,5 @@ angular
           };
         }
       };
-
-      
     }
   });

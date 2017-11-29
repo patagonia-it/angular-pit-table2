@@ -1,7 +1,7 @@
 angular
   .module('angular-pit-table')
   .factory('PTColumnBuilder', ptColumnBuilder)
-  .factory('PTParamsBuilder', ['$rootScope', ptParamsBuilder]);
+  .factory('PTParamsBuilder', ptParamsBuilder);
 
 function ptColumnBuilder() {
   var PTColumn = {
@@ -26,7 +26,7 @@ function ptColumnBuilder() {
       if (angular.isDefined(sort) && sort.toLowerCase() !== 'asc' && sort.toLowerCase() !== 'desc') {
         throw new Error('sort expected string with value "asc" or "desc" but received ' + typeof sort);
       }
-      this.sort = angular.isDefined(sort) ? sort : 'natural';
+      this.sort = angular.isDefined(sort) ? sort.toLowerCase() : 'natural';
       return this;
     },
     withSelect: function () {
@@ -52,7 +52,7 @@ function ptColumnBuilder() {
   };
 }
 
-function ptParamsBuilder($rootScope) {
+function ptParamsBuilder(pitTable) {
   var PTParams = {
     withParam: function (key, value) {
       if (!angular.isString(key) || key === '') {
@@ -107,7 +107,7 @@ function ptParamsBuilder($rootScope) {
     newParams: function () {
       var params = Object.create(PTParams);
       params.params = {};
-      params.method = 'GET';
+      params.method = pitTable.method;
       params.inBody = false;
 
       return params;
