@@ -7,16 +7,17 @@ angular
       ptParameters: '<',
       ptData: '<'
     },
-    controller: function (pitTable, $log, $http, ENV) {
+    controller: function (pitTable, $log, $http, ENV, $loading) {
       var ctrl = this;
       ctrl.uiFramework = pitTable.uiFramework;
+      ctrl.isLoading = false;
       ctrl.utils = {
         sort: [],
         pagination: {
           page: 0,
-          size: pitTable.pageSize
-          // totalRows: 0,
-          // totalPages: 0
+          size: pitTable.pageSize,
+          totalRows: 0,
+          totalPages: 0
         }
       };
 
@@ -50,13 +51,18 @@ angular
           object.data = ctrl.ptParameters.params;
         }
 
+        $loading.start('data');
+        ctrl.isLoading = true;
         $http(object).then(function (response) {
           ctrl.ptData = response.data.content;
-          ctrl.utils.pagination.page = response.data.number;
-          ctrl.utils.pagination.totalRows = response.data.totalElements;
-          ctrl.utils.pagination.totalPages = response.data.totalPages;
+          ctrl.utils.pagination.page = ctrl.ptParameters.projection ? response.data.page.number: response.data.number;
+          ctrl.utils.pagination.totalRows = ctrl.ptParameters.projection ? response.data.page.totalElements : response.data.totalElements;
+          ctrl.utils.pagination.totalPages = ctrl.ptParameters.projection ? response.data.page.totalPages : response.data.totalPages;
         }, function () {
           $log.error('Ha ocurrido un error al intentar obtener la información.');
+        }).finally(function () {
+          $loading.finish('data');
+          ctrl.isLoading = false;
         });
       };
     }

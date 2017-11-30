@@ -10,7 +10,6 @@ angular
     },
     controller: function () {
       var ctrl = this;
-
       ctrl.columnOrder = function (column) {
         if (angular.isUndefined(column.sort)) {
           return;

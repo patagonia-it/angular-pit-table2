@@ -3,8 +3,7 @@ angular.module('angular-pit-table')
   pageRadious: 2,
   pageSize: 20,
   emptyTableText: 'Ningún dato disponible en esta tabla.',
-  uiFramework: 'bootstrap',
-  method: 'ajkshfkajshfkasl'
+  uiFramework: 'bootstrap'
 })
 .constant('ENV', {
   backendUrl: 'http://localhost:3000'

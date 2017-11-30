@@ -5,6 +5,7 @@ angular
       pageRadious: 2,
       pageSize: 20,
       emptyTableText: 'Ningún dato disponible en esta tabla.',
+      loadingTableText: 'Cargando datos...',
       method: 'GET'
     };
     var newOptions = {};
@@ -17,6 +18,7 @@ angular
       this.pageRadious = angular.isNumber(option.pageRadious) ? option.pageRadious : defaultOptions.pageRadious;
       this.pageSize = angular.isNumber(option.pageSize) ? option.pageSize : defaultOptions.pageSize;
       this.emptyTableText = option.emptyTableText;
+      this.loadingTableText = option.loadingTableText;
       if (option.uiFramework && (option.uiFramework === 'bootstrap' || option.uiFramework === 'material')) {
         this.uiFramework = option.uiFramework;
       }

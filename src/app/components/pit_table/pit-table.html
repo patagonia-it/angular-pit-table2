@@ -1,14 +1,17 @@
-<table ng-class="{ 'table table-bordered table-striped table-responsive': $ctrl.uiFramework === 'bootstrap', 'md-table': $ctrl.uiFramework === 'material' }">
-  <thead ng-class="{ 'md-head': $ctrl.uiFramework === 'material' }">
-    <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }">
-      <th ng-repeat="column in $ctrl.ptColumns" ng-class="{ 'sortable': column.sort }">
-        <pthd column="column"></pthd>
-      </th>
-    </tr>
-  </thead>
-  <tbody ng-class="{ 'md-body': $ctrl.uiFramework === 'material' }">
-    <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }" ng-repeat="data in $ctrl.ptData">
-      <td ng-repeat="column in $ctrl.ptColumns">{{ data[column.id] }}</td>
-    </tr>
-  </tbody>
-</table>
+<div dw-loading="data">
+  <table ng-class="{ 'table table-bordered table-striped table-responsive': $ctrl.uiFramework === 'bootstrap', 'md-table': $ctrl.uiFramework === 'material', 'dw-loading-container': $ctrl.isLoading }">
+    <thead ng-class="{ 'md-head': $ctrl.uiFramework === 'material' }">
+      <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }">
+        <th ng-repeat="column in $ctrl.ptColumns" ng-class="{ 'sortable': column.sort }">
+          <pthd column="column"></pthd>
+        </th>
+      </tr>
+    </thead>
+    <tbody ng-class="{ 'md-body': $ctrl.uiFramework === 'material' }">
+      <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }" ng-repeat="data in $ctrl.ptData">
+        <td ng-repeat="column in $ctrl.ptColumns">{{ data[column.id] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

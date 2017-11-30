@@ -2,18 +2,37 @@ body {
   background-color: lightgrey;
 }
 
-ptable > .table > thead > tr > th {
+ptable .table > thead > tr > th {
   padding: 0;
 }
 
-ptable > .table > thead > tr > th.sortable {
+ptable table > thead > tr > th.sortable {
   cursor: pointer;
 }
 
-ptable > .table > thead > tr > th > pthd, ptable > .table > thead > tr > th > pthd > span {
+ptable table > thead > tr > th > pthd, ptable table > thead > tr > th > pthd > span {
   display: block;
 }
 
-ptable > .table > thead > tr > th > pthd > span {
+ptable table > thead > tr > th > pthd > span {
   padding: 8px;
+}
+
+ptable table.dw-loading-container {
+  display: none;
+}
+
+ptable .dw-loading.dw-loading-overlay {
+  background: none;
+}
+
+ptable .dw-loading.dw-loading-overlay.dw-loading-active {
+  height: 150px;
+}
+
+.dw-loading > .dw-loading-body > .dw-loading-text {
+  top: 30px;
+  font-weight: normal;
+  font-size: inherit;
+  text-shadow: none;
 }
