@@ -1,17 +1,19 @@
-<div dw-loading="data">
-  <table ng-class="{ 'table table-bordered table-striped table-responsive': $ctrl.uiFramework === 'bootstrap', 'md-table': $ctrl.uiFramework === 'material', 'dw-loading-container': $ctrl.isLoading }">
+<div dw-loading="data" ng-class="{ 'md-table-container' : $ctrl.uiFramework === 'material' }">
+  <table ng-class="{ 'table table-bordered table-striped table-responsive': $ctrl.uiFramework === 'bootstrap', 'md-table': $ctrl.uiFramework === 'material', 'dw-loading-container': $ctrl.isLoading, 'md-row-select': $ctrl.uiFramework === 'material' && $ctrl.ptParams.hasSelect }">
     <thead ng-class="{ 'md-head': $ctrl.uiFramework === 'material' }">
       <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }">
-        <th ng-repeat="column in $ctrl.ptColumns" ng-class="{ 'sortable': column.sort }">
-          <pthd column="column"></pthd>
+        <th ng-repeat="column in $ctrl.ptColumns" ng-class="{ 'sortable': column.sort && $ctrl.ptData.length && $ctrl.uiFramework === 'bootstrap', 'md-active': column.sort && $ctrl.ptData.length && $ctrl.uiFramework === 'material', 'md-column': $ctrl.uiFramework === 'material'}">
+          <span ng-click="$ctrl.columnOrder(column)" ng-if="!$ctrl.ptParams.hasSelect">
+            {{ column.name }}<i ng-class="$ctrl.thIconClass(column.sort)" ng-class="{ 'md-sort': $ctrl.uiFramework === 'material', 'pull-right fa': $ctrl.uiFramework === 'bootstrap' }" ng-if="column.sort && $ctrl.ptData.length"></i>
+          </span>
         </th>
       </tr>
     </thead>
     <tbody ng-class="{ 'md-body': $ctrl.uiFramework === 'material' }">
       <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }" ng-repeat="data in $ctrl.ptData">
-        <td ng-repeat="column in $ctrl.ptColumns">{{ data[column.id] }}</td>
+        <td ng-repeat="column in $ctrl.ptColumns" ng-class="{ 'md-cell': $ctrl.uiFramework === 'material' }">{{ data[column.id] }}</td>
       </tr>
+      <tr ng-if="!$ctrl.ptData.length" class="text-center"><td colspan="{{ $ctrl.ptColumns.length }}">{{ $ctrl.emptyTableText }}</td></tr>
     </tbody>
   </table>
 </div>
-

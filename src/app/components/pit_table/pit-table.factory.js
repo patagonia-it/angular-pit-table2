@@ -28,10 +28,6 @@ function ptColumnBuilder() {
       }
       this.sort = angular.isDefined(sort) ? sort.toLowerCase() : 'natural';
       return this;
-    },
-    withSelect: function () {
-      this.isSelect = true;
-      return this;
     }
   };
 
@@ -44,7 +40,6 @@ function ptColumnBuilder() {
       var column = Object.create(PTColumn);
       column.id = id;
       column.name = id;
-      column.isSelect = false;
 
       return column;
     },
@@ -100,6 +95,10 @@ function ptParamsBuilder(pitTable) {
       }
       this.params.projection = projection;
       return this;
+    },
+    withSelect: function () {
+      this.hasSelect = true;
+      return this;
     }
   };
 
@@ -109,6 +108,7 @@ function ptParamsBuilder(pitTable) {
       params.params = {};
       params.method = pitTable.method;
       params.inBody = false;
+      params.hasSelect = false;
 
       return params;
     },

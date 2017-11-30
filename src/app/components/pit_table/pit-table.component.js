@@ -9,6 +9,7 @@ angular
     },
     controller: function (pitTable, $log, $http, ENV, $loading) {
       var ctrl = this;
+      ctrl.emptyTableText = pitTable.emptyTableText;
       ctrl.uiFramework = pitTable.uiFramework;
       ctrl.isLoading = false;
       ctrl.utils = {
@@ -64,6 +65,40 @@ angular
           $loading.finish('data');
           ctrl.isLoading = false;
         });
+      };
+
+      ctrl.columnOrder = function (column) {
+        if (angular.isUndefined(column.sort) || !ctrl.ptData.length) {
+          return;
+        }
+        angular.forEach(ctrl.ptColumns, function (ptColumn) {
+          if (column.id === ptColumn.id) {
+            if (ptColumn.sort === 'natural') {
+              ptColumn.sort = 'asc';
+            } else if (ptColumn.sort === 'asc') {
+              ptColumn.sort = 'desc';
+            } else {
+              ptColumn.sort = 'natural';
+            }
+            return;
+          }
+        });
+
+        ctrl.ptParameters.loadData();
+      };
+
+      ctrl.thIconClass = function (sort) {
+        if (angular.isDefined(sort)) {
+          return ctrl.uiFramework === 'bootstrap' ? {
+            'pull-right fa fa-sort': sort === 'natural',
+            'pull-right fa fa-sort-desc': sort === 'desc',
+            'pull-right fa fa-sort-asc': sort === 'asc'
+          } : {
+            'md-sort md-sort-icon': sort === 'natural',
+            'md-sort md-sort-icon md-desc': sort === 'desc',
+            'md-sort md-sort-icon md-asc': sort === 'asc'
+          };
+        }
       };
     }
   });

@@ -3,6 +3,7 @@ angular.module('angular-pit-table')
   pageRadious: 2,
   pageSize: 20,
   emptyTableText: 'Ningún dato disponible en esta tabla.',
+  loadingTableText: 'Cargando datos...',
   uiFramework: 'bootstrap'
 })
 .constant('ENV', {

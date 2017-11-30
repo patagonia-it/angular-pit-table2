@@ -1,7 +1,4 @@
-body {
-  background-color: lightgrey;
-}
-
+/* PIT TABLE COMMON */
 ptable .table > thead > tr > th {
   padding: 0;
 }
@@ -10,14 +7,19 @@ ptable table > thead > tr > th.sortable {
   cursor: pointer;
 }
 
-ptable table > thead > tr > th > pthd, ptable table > thead > tr > th > pthd > span {
+ptable table > thead > tr > th > span {
   display: block;
 }
 
-ptable table > thead > tr > th > pthd > span {
+ptable table > thead > tr > th > span {
   padding: 8px;
 }
 
+.text-center {
+  text-align: center;
+}
+
+/* LOADING */
 ptable table.dw-loading-container {
   display: none;
 }
@@ -36,3 +38,327 @@ ptable .dw-loading.dw-loading-overlay.dw-loading-active {
   font-size: inherit;
   text-shadow: none;
 }
+
+/* PIT TABLE MATERIAL */
+ptable .md-table-container {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+ptable table.md-table {
+  width: 100%;
+  border-spacing: 0;
+  overflow: hidden;
+}
+ptable table.md-table thead.md-head > tr.md-row {
+  height: 56px;
+}
+ptable table.md-table tbody.md-body > tr.md-row,
+ptable table.md-table tfoot.md-foot > tr.md-row {
+  height: 48px;
+}
+ptable table.md-table th.md-column {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+ptable table.md-table th.md-column .md-icon {
+  height: 16px;
+  width: 16px;
+  font-size: 16px !important;
+  line-height: 16px !important;
+}
+ptable table.md-table th.md-column .md-icon.md-sort-icon {
+  color: rgba(0, 0, 0, 0.26);
+  opacity: 0;
+  transition: -webkit-transform 0.25s, opacity 0.25s;
+  transition: transform 0.25s, opacity 0.25s;
+}
+ptable table.md-table th.md-column .md-icon.md-sort-icon.md-asc {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+ptable table.md-table th.md-column .md-icon.md-sort-icon.md-desc {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+ptable table.md-table th.md-column .md-icon:not(:first-child) {
+  margin-left: 8px;
+}
+ptable table.md-table th.md-column .md-icon:not(:last-child) {
+  margin-right: 8px;
+}
+ptable table.md-table th.md-column.md-active,
+ptable table.md-table th.md-column.md-active .md-icon {
+  color: rgba(0, 0, 0, 0.87);
+}
+ptable table.md-table th.md-column:hover .md-icon.md-sort-icon,
+ptable table.md-table th.md-column.md-active .md-icon.md-sort-icon {
+  opacity: 1;
+}
+ptable table.md-table tr.md-row[ng\:repeat].ng-leave,
+ptable table.md-table tr.md-row[ng-repeat].ng-leave,
+ptable table.md-table tr.md-row[x-ng-repeat].ng-leave,
+ptable table.md-table tr.md-row[data-ng-repeat].ng-leave {
+  display: none;
+}
+ptable table.md-table.md-row-select tbody.md-body > tr.md-row {
+  transition: background-color 0.2s;
+}
+ptable table.md-table.md-row-select tbody.md-body > tr.md-row:not([disabled]):hover {
+  background-color: #eeeeee !important;
+}
+table.md-table.md-row-select tbody.md-body > tr.md-row.md-selected { // TODO: Revisar
+  background-color: #f5f5f5;
+}
+ptable table.md-table.md-row-select td.md-cell:first-child,
+ptable table.md-table.md-row-select th.md-column:first-child {
+  width: 20px;
+  padding: 0 0 0 24px;
+}
+ptable table.md-table.md-row-select td.md-cell:nth-child(2),
+ptable table.md-table.md-row-select th.md-column:nth-child(2) {
+  padding: 0 24px;
+}
+ptable table.md-table.md-row-select td.md-cell:nth-child(n+3):nth-last-child(n+2),
+ptable table.md-table.md-row-select th.md-column:nth-child(n+3):nth-last-child(n+2) {
+  padding: 0 56px 0 0;
+}
+ptable table.md-table:not(.md-row-select) td.md-cell:first-child,
+ptable table.md-table:not(.md-row-select) th.md-column:first-child {
+  padding: 0 24px;
+}
+ptable table.md-table:not(.md-row-select) td.md-cell:nth-child(n+2):nth-last-child(n+2),
+ptable table.md-table:not(.md-row-select) th.md-column:nth-child(n+2):nth-last-child(n+2) {
+  padding: 0 56px 0 0;
+}
+ptable table.md-table td.md-cell,
+ptable table.md-table th.md-column {
+  vertical-align: middle;
+  text-align: left;
+}
+ptable table.md-table td.md-cell > *,
+ptable table.md-table th.md-column > * {
+  vertical-align: middle;
+}
+ptable table.md-table td.md-cell:last-child,
+ptable table.md-table th.md-column:last-child {
+  padding: 0 24px 0 0;
+}
+ptable table.md-table td.md-cell.md-numeric,
+ptable table.md-table th.md-column.md-numeric { // TODO: Revisar
+  text-align: right;
+}
+ptable table.md-table td.md-cell .md-checkbox,
+ptable table.md-table th.md-column .md-checkbox { // TODO: Revisar
+  margin: 0;
+  width: 20px;
+}
+ptable table.md-table td.md-cell.md-clickable,
+ptable table.md-table th.md-column.md-clickable {
+  cursor: pointer;
+}
+ptable table.md-table td.md-cell.md-clickable:focus,
+ptable table.md-table th.md-column.md-clickable:focus {
+  outline: none;
+}
+ptable table.md-table td.md-cell {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 13px;
+  border-top: 1px rgba(0, 0, 0, 0.12) solid;
+}
+ptable table.md-table td.md-cell.md-numeric .md-select {
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+ptable table.md-table td.md-cell.md-numeric .md-select .md-select-value {
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+ptable table.md-table td.md-cell.md-placeholder {
+  color: rgba(0, 0, 0, 0.26);
+}
+ptable table.md-table td.md-cell .md-select > .md-select-value > span.md-select-icon {
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  color: rgba(0, 0, 0, 0.54);
+  width: 18px;
+  text-align: right;
+}
+ptable table.md-table td.md-cell .md-select > .md-select-value > span.md-select-icon:after {
+  -webkit-transform: scaleY(0.4) scaleX(0.8);
+  transform: scaleY(0.4) scaleX(0.8);
+}
+
+/*
+.md-table-pagination {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-flex-wrap: wrap-reverse;
+  -ms-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+  box-sizing: border-box;
+  padding: 0 24px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.54);
+  border-top: 1px rgba(0, 0, 0, 0.12) solid;
+}
+.md-table-pagination md-select {
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  min-width: 64px;
+}
+.md-table-pagination md-select:not([disabled]):focus .md-select-value {
+  color: rgba(0, 0, 0, 0.54);
+}
+.md-table-pagination md-select .md-select-value {
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+.md-table-pagination md-select .md-select-value span.md-select-icon {
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+  margin-right: -6px !important;
+}
+.md-table-pagination md-select .md-select-value span.md-select-icon:after {
+  top: initial;
+  -webkit-transform: scaleY(0.5) scaleX(1);
+  transform: scaleY(0.5) scaleX(1);
+}
+.md-table-pagination > * {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 56px;
+}
+.md-table-pagination > .buttons:not(:first-child),
+.md-table-pagination > .limit-select:not(:first-child) {
+  margin-left: 32px;
+}
+.md-table-pagination > .buttons {
+  margin-right: -16px;
+}
+.md-table-pagination > .buttons > .md-button.md-icon-button {
+  margin: 0;
+}
+.md-table-pagination > .buttons > .label + .md-button.md-icon-button {
+  margin-left: 20px;
+}
+md-select.md-table-select {
+  margin: 0;
+}
+md-select.md-table-select > .md-select-value {
+  padding: 0;
+  min-width: 0;
+  min-height: 24px;
+  border-bottom: 0 !important;
+}
+md-select.md-table-select > .md-select-value > span {
+  display: block;
+  height: auto;
+  -webkit-transform: none !important;
+  transform: none !important;
+}
+md-select.md-table-select > .md-select-value > span > .md-text {
+  display: inherit;
+  height: inherit;
+  -webkit-transform: inherit;
+  transform: inherit;
+}
+md-select.md-table-select > .md-select-value > span.md-select-icon {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 24px;
+  margin: 0;
+}
+md-select.md-table-select > .md-select-value > span.md-select-icon:after {
+  top: initial;
+}
+.md-select-menu-container.md-table-select,
+.md-select-menu-container.md-pagination-select {
+  margin-left: -2px;
+  border-radius: 2px;
+}
+.md-select-menu-container.md-table-select md-select-menu,
+.md-select-menu-container.md-pagination-select md-select-menu,
+.md-select-menu-container.md-table-select md-content,
+.md-select-menu-container.md-pagination-select md-content {
+  border-radius: inherit;
+}
+.md-select-menu-container.md-table-select md-content,
+.md-select-menu-container.md-pagination-select md-content {
+  padding: 0;
+}
+.md-select-menu-container.md-table-select .md-text {
+  font-size: 13px;
+}
+.md-select-menu-container.md-pagination-select .md-text {
+  font-size: 12px;
+}
+md-toolbar.md-table-toolbar {
+  box-shadow: none;
+}
+md-toolbar.md-table-toolbar.md-default-theme:not(.md-menu-toolbar).md-default,
+md-toolbar.md-table-toolbar:not(.md-menu-toolbar).md-default {
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 0.87);
+}
+md-toolbar.md-table-toolbar.md-default-theme:not(.md-menu-toolbar).md-default .md-button,
+md-toolbar.md-table-toolbar:not(.md-menu-toolbar).md-default .md-button {
+  color: rgba(0, 0, 0, 0.87);
+}
+@media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {
+  md-toolbar.md-table-toolbar .md-toolbar-tools {
+    height: 64px;
+    max-height: initial;
+  }
+}
+md-toolbar.md-table-toolbar .md-toolbar-tools {
+  padding: 0 24px;
+}
+md-toolbar.md-table-toolbar .md-toolbar-tools md-icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+md-toolbar.md-table-toolbar .md-toolbar-tools > .md-button.md-icon-button {
+  margin: 0;
+}
+md-toolbar.md-table-toolbar .md-toolbar-tools > .md-button.md-icon-button:first-child {
+  margin-left: -12px;
+}
+md-toolbar.md-table-toolbar .md-toolbar-tools > .md-button.md-icon-button:last-child {
+  margin-right: -12px;
+}
+md-card > md-toolbar.md-table-toolbar:first-child,
+md-card > md-table-container:first-child {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+md-card > md-toolbar.md-table-toolbar:last-child,
+md-card > md-table-container:last-child {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+*/
