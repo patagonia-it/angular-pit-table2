@@ -387,18 +387,20 @@ md-card > md-table-container:last-child {
 
 /* Toolbar material */
 
-.md-toolbar-custom {
-  background-color: initial !important;
+.toolbar-pit {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .md-toolbar-icon-custom {
   color: grey !important;
-  line-height: 0.3;
+  line-height: 0.8;
 }
 
 .tooblar-label-custom {
   font-weight: 300;
-  height: 21px;
+  height: 26px;
+  font-size: 21px;
 }
 
 /* Toolbar dataTable */
