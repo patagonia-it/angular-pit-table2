@@ -10,7 +10,7 @@ angular
     controller: function (pitTable, $log, $http, ENV, $loading) {
       var ctrl = this;
       ctrl.emptyTableText = pitTable.emptyTableText;
-      ctrl.uiFramework = pitTable.uiFramework;
+      ctrl.uiFramework = pitTable.uiFramework;      
       ctrl.isLoading = false;
       ctrl.utils = {
         sort: [],
@@ -19,7 +19,9 @@ angular
           size: pitTable.pageSize,
           totalRows: 0,
           totalPages: 0
-        }
+        },
+        search: '',
+        pageSizes: pitTable.pageSizes
       };
 
       ctrl.$onInit = function () {
@@ -46,8 +48,22 @@ angular
           method: ctrl.ptParameters.method
         };
 
+        object.params = {
+          sort: ctrl.utils.sort, 
+          page: ctrl.utils.pagination.page, 
+          size: ctrl.utils.pagination.size
+        };
+
+        if(ctrl.utils.search) {
+          object.params.search = ctrl.utils.search;
+        }
+                
+        if(ctrl.ptParameters.projection){
+          angular.extend(object.params, {projection: ctrl.ptParameters.projection});
+        }
+
         if (!ctrl.ptParameters.inBody || ctrl.ptParameters.projection) {
-          object.params = angular.extend({}, ctrl.ptParameters.params, {sort: ctrl.utils.sort});
+          angular.extend(object.params, ctrl.ptParameters.params);
         } else {
           object.data = ctrl.ptParameters.params;
         }

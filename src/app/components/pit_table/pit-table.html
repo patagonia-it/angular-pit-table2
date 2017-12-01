@@ -1,3 +1,4 @@
+<pttoolbar ng-class="{'row': $ctrl.uiFramework === 'bootstrap'}"></pttoolbar>
 <div dw-loading="data" ng-class="{ 'md-table-container' : $ctrl.uiFramework === 'material' }">
   <table ng-class="{ 'table table-bordered table-striped table-responsive': $ctrl.uiFramework === 'bootstrap', 'md-table': $ctrl.uiFramework === 'material', 'dw-loading-container': $ctrl.isLoading, 'md-row-select': $ctrl.uiFramework === 'material' && $ctrl.ptParams.hasSelect }">
     <thead ng-class="{ 'md-head': $ctrl.uiFramework === 'material' }">

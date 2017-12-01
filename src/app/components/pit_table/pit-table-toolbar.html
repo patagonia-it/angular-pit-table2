@@ -1,0 +1,28 @@
+<div ng-if="$ctrl.ptableCtrl.uiFramework === 'material'">
+  <md-toolbar class="md-toolbar-custom">
+    <div class="md-toolbar-tools" >
+      <md-icon class="md-toolbar-icon-custom">search</md-icon>
+      <form flex="" name="filterForm">
+        <md-input-container class="md-block">
+          <label class="tooblar-label-custom">Buscar</label>
+          <input type="text" ng-model="$ctrl.filterModel" ng-change="$ctrl.search($ctrl.filterModel)">
+        </md-input-container>
+      </form>
+    </div>
+  </md-toolbar>
+</div>
+<div ng-if="$ctrl.ptableCtrl.uiFramework === 'bootstrap' || !$ctrl.ptableCtrl.uiFramework" ng-class="{'height-no-bootstrap': !$ctrl.ptableCtrl.uiFramework}">
+  <div class="dataTables_length">
+    <label>
+      Mostrar 
+      <select ng-model="$ctrl.size" ng-change="$ctrl.selectSize($ctrl.size)" ng-options="size for size in $ctrl.pageSizes track by size"></select> 
+      entradas
+    </label>
+  </div>
+  <div class="dataTables_filter">
+    <label>
+      Search:
+      <input class="input-search-dataTable" type="text" ng-model="$ctrl.filterModel" ng-change="$ctrl.search($ctrl.filterModel)">
+    </label>
+  </div>
+</div>
