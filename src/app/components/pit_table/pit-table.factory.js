@@ -85,7 +85,7 @@ function ptParamsBuilder(pitTable) {
         throw new Error('method expected string with value "GET" or "POST" but received ' + typeof method);
       }
       this.method = method;
-      this.inBody = method.toUpperCase() == 'POST' && inBody ? true : false;
+      this.inBody = method.toUpperCase() === 'POST' && inBody;
 
       return this;
     },

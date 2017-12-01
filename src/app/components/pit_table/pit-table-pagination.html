@@ -1,0 +1,11 @@
+<div ng-if="$ctrl.ptableCtrl.uiFramework === 'bootstrap'" class="row">
+  <div class="col-xs-12 col-md-6">
+    Mostrando registros del {{ ($ctrl.ptableCtrl.utils.pagination.page * $ctrl.ptableCtrl.utils.pagination.size) + 1 }} al {{ $ctrl.ptableCtrl.utils.pagination.totalRows%$ctrl.ptableCtrl.utils.pagination.size === 0 ? ($ctrl.ptableCtrl.utils.pagination.page + 1) * $ctrl.ptableCtrl.utils.pagination.size : $ctrl.ptableCtrl.utils.pagination.totalRows }} de {{ $ctrl.ptableCtrl.utils.pagination.totalRows }}
+  </div>
+  <div class="col-xs-12 col-md-6 text-right">
+    1, 2, 3, 4...
+  </div>
+</div>
+<div >
+
+</div>

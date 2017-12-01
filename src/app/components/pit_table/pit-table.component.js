@@ -56,9 +56,10 @@ angular
         ctrl.isLoading = true;
         $http(object).then(function (response) {
           ctrl.ptData = response.data.content;
-          ctrl.utils.pagination.page = ctrl.ptParameters.projection ? response.data.page.number: response.data.number;
+          ctrl.utils.pagination.page = ctrl.ptParameters.projection ? response.data.page.number : response.data.number;
           ctrl.utils.pagination.totalRows = ctrl.ptParameters.projection ? response.data.page.totalElements : response.data.totalElements;
           ctrl.utils.pagination.totalPages = ctrl.ptParameters.projection ? response.data.page.totalPages : response.data.totalPages;
+
         }, function () {
           $log.error('Ha ocurrido un error al intentar obtener la información.');
         }).finally(function () {
