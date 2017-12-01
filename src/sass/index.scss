@@ -1,3 +1,25 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v31/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
 /* PIT TABLE COMMON */
 ptable .table > thead > tr > th {
   padding: 0;
@@ -362,3 +384,41 @@ md-card > md-table-container:last-child {
   border-bottom-right-radius: 2px;
 }
 */
+
+/* Toolbar material */
+
+.toolbar-pit {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.md-toolbar-icon-custom {
+  color: grey !important;
+  line-height: 0.8;
+}
+
+.tooblar-label-custom {
+  font-weight: 300;
+  height: 26px;
+  font-size: 21px;
+}
+
+/* Toolbar dataTable */
+
+.dataTables_length {
+  float: left;
+}
+
+.dataTables_filter {
+  float: right;
+  text-align: right;
+}
+
+.height-no-bootstrap {
+  height: 35px;
+}
+
+.input-search-dataTable {
+  border: 1px solid #939393;
+  border-radius: 3px;
+}

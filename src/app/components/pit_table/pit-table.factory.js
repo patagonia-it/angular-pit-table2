@@ -93,7 +93,7 @@ function ptParamsBuilder(pitTable) {
       if (!angular.isString(projection) || projection === '') {
         throw new Error('projection expected string but received ' + typeof projection);
       }
-      this.params.projection = projection;
+      this.projection = projection;
       return this;
     },
     withSelect: function () {

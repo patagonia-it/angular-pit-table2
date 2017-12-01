@@ -6,7 +6,8 @@ angular
       pageSize: 20,
       emptyTableText: 'Ningún dato disponible en esta tabla.',
       loadingTableText: 'Cargando datos...',
-      method: 'GET'
+      method: 'GET',
+      pageSizes: [10, 25, 50, 100]
     };
     var newOptions = {};
 
@@ -23,6 +24,9 @@ angular
         this.uiFramework = option.uiFramework;
       }
       this.method = defaultOptions.method;
+      this.pageSizes = angular.isArray(option.pageSizes) && option.pageSizes.every(function(size){
+        return angular.isNumber(size) && size > 0;
+      }) ? option.pageSizes : defaultOptions.pageSizes
     }
 
     this.$get = function () {
