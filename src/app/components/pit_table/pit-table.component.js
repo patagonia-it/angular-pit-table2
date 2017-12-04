@@ -10,7 +10,7 @@ angular
     controller: function (pitTable, $log, $http, ENV, $loading) {
       var ctrl = this;
       ctrl.emptyTableText = pitTable.emptyTableText;
-      ctrl.uiFramework = pitTable.uiFramework;      
+      ctrl.uiFramework = pitTable.uiFramework;
       ctrl.isLoading = false;
       ctrl.utils = {
         sort: [],
@@ -49,16 +49,16 @@ angular
         };
 
         object.params = {
-          sort: ctrl.utils.sort, 
-          page: ctrl.utils.pagination.page, 
+          sort: ctrl.utils.sort,
+          page: ctrl.utils.pagination.page,
           size: ctrl.utils.pagination.size
         };
 
-        if(ctrl.utils.search) {
+        if (ctrl.utils.search) {
           object.params.search = ctrl.utils.search;
         }
-                
-        if(ctrl.ptParameters.projection){
+
+        if (ctrl.ptParameters.projection) {
           angular.extend(object.params, {projection: ctrl.ptParameters.projection});
         }
 
@@ -75,7 +75,6 @@ angular
           ctrl.utils.pagination.page = ctrl.ptParameters.projection ? response.data.page.number : response.data.number;
           ctrl.utils.pagination.totalRows = ctrl.ptParameters.projection ? response.data.page.totalElements : response.data.totalElements;
           ctrl.utils.pagination.totalPages = ctrl.ptParameters.projection ? response.data.page.totalPages : response.data.totalPages;
-
         }, function () {
           $log.error('Ha ocurrido un error al intentar obtener la información.');
         }).finally(function () {

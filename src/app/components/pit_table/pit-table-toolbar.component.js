@@ -6,21 +6,29 @@ angular
       ptableCtrl: '^ptable'
     },
     controller: function () {
-    	var ctrl = this;
+      var ctrl = this;
+      ctrl.$onInit = function () {
+        ctrl.pageSizes = ctrl.ptableCtrl.utils.pageSizes;
+        ctrl.size = ctrl.ptableCtrl.utils.pagination.size;
+      };
 
-    	ctrl.$onInit = function () {
-    		ctrl.pageSizes = ctrl.ptableCtrl.utils.pageSizes;
-    		ctrl.size = ctrl.ptableCtrl.utils.pagination.size;
-    	};
+      ctrl.search = function (text) {
+        ctrl.ptableCtrl.utils.search = text;
+        ctrl.ptableCtrl.ptParameters.loadData();
+      };
 
-    	ctrl.search = function (text) {
-    		ctrl.ptableCtrl.utils.search = text;
-    		ctrl.ptableCtrl.ptParameters.loadData();
-    	};
+      ctrl.selectSize = function (size) {
+        ctrl.ptableCtrl.utils.pagination.size = size;
+        ctrl.ptableCtrl.ptParameters.loadData();
+      };
 
-    	ctrl.selectSize = function(size) {
-    		ctrl.ptableCtrl.utils.pagination.size = size;
-    		ctrl.ptableCtrl.ptParameters.loadData();
-    	};
+      ctrl.removeSearch = function () {
+        if(!ctrl.filterModel) {
+          return;
+        }
+        delete ctrl.filterModel;
+        ctrl.ptableCtrl.utils.search = '';
+        ctrl.ptableCtrl.ptParameters.loadData();
+      };
     }
-});
+  });
