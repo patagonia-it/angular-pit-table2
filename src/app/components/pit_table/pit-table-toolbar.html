@@ -1,15 +1,13 @@
 <div ng-if="$ctrl.ptableCtrl.uiFramework === 'material'">
-  <md-toolbar class="md-toolbar-custom">
-    <div class="md-toolbar-tools" >
-      <md-icon class="md-toolbar-icon-custom">search</md-icon>
-      <form flex="" name="filterForm">
-        <md-input-container class="md-block">
+  <div layout="row" class="toolbar-pit">
+    <div flex>
+      <md-input-container class="md-block">
+          <md-icon class="md-toolbar-icon-custom">search</md-icon>
           <label class="tooblar-label-custom">Buscar</label>
           <input type="text" ng-model="$ctrl.filterModel" ng-change="$ctrl.search($ctrl.filterModel)">
         </md-input-container>
-      </form>
     </div>
-  </md-toolbar>
+  </div>
 </div>
 <div ng-if="$ctrl.ptableCtrl.uiFramework === 'bootstrap' || !$ctrl.ptableCtrl.uiFramework" ng-class="{'height-no-bootstrap': !$ctrl.ptableCtrl.uiFramework}">
   <div class="dataTables_length">
