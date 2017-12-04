@@ -4,7 +4,7 @@ angular.module('angular-pit-table')
   pageSize: 30,
   emptyTableText: 'Ningún dato disponible en esta tabla.',
   loadingTableText: 'Cargando datos...',
-  uiFramework: 'material',
+  uiFramework: 'bootstrap',
   pageSizes: [
     10,
     25,

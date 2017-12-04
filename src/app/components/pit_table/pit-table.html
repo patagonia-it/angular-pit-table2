@@ -1,10 +1,13 @@
-<div dw-loading="data" ng-class="{ 'md-table-container' : $ctrl.uiFramework === 'material', 'container-fluid': $ctrl.uiFramework === 'bootstrap', 'table-container': !$ctrl.uiFramework }" ng-cloak>
+<div dw-loading="data" ng-class="{ 'md-table-container' : $ctrl.uiFramework === 'material', 'container-fluid': $ctrl.uiFramework === 'bootstrap', 'table-container': !$ctrl.uiFramework }">
   <pttoolbar></pttoolbar>
   <table ng-class="{ 'table table-bordered table-striped table-responsive': $ctrl.uiFramework === 'bootstrap', 'md-table': $ctrl.uiFramework === 'material', 'md-row-select': $ctrl.uiFramework === 'material' && $ctrl.ptParams.hasSelect, 'dw-loading-container': $ctrl.isLoading }">
     <thead ng-class="{ 'md-head': $ctrl.uiFramework === 'material' }">
       <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }">
+        <th ng-if="$ctrl.ptParameters.hasSelect" ng-class="{'th-checkbox' : $ctrl.uiFramework === 'bootstrap' || !$ctrl.uiFramework, 'padding-only-left' : $ctrl.uiFramework === 'material'}">
+          <ptcheckbox in-header="true"></ptcheckbox>
+        </th>
         <th ng-repeat="column in $ctrl.ptColumns" ng-class="{ 'sortable': column.sort && $ctrl.ptData.length && $ctrl.uiFramework === 'bootstrap', 'md-active': column.sort && $ctrl.ptData.length && $ctrl.uiFramework === 'material', 'md-column': $ctrl.uiFramework === 'material'}">
-          <span ng-click="$ctrl.columnOrder(column)" ng-if="!$ctrl.ptParams.hasSelect">
+          <span ng-click="$ctrl.columnOrder(column)">
             {{ column.name }}<i ng-class="$ctrl.thIconClass(column.sort)" ng-class="{ 'md-sort': $ctrl.uiFramework === 'material', 'pull-right fa': $ctrl.uiFramework === 'bootstrap' }" ng-if="column.sort && $ctrl.ptData.length"></i>
           </span>
         </th>
@@ -12,6 +15,9 @@
     </thead>
     <tbody ng-class="{ 'md-body': $ctrl.uiFramework === 'material' }">
       <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }" ng-repeat="data in $ctrl.ptData">
+        <td ng-if="$ctrl.ptParameters.hasSelect" class="td-checkbox" ng-class="{ 'md-cell md-checkbox-cell': $ctrl.uiFramework === 'material' }">
+          <ptcheckbox in-header="false" item="data"></ptcheckbox>
+        </td>
         <td ng-repeat="column in $ctrl.ptColumns" ng-class="{ 'md-cell': $ctrl.uiFramework === 'material' }">{{ data[column.id] }}</td>
       </tr>
       <tr ng-if="!$ctrl.ptData.length" class="text-center"><td colspan="{{ $ctrl.ptColumns.length }}">{{ $ctrl.emptyTableText }}</td></tr>

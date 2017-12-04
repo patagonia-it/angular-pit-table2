@@ -17,16 +17,24 @@ angular
 
     function PitTableOptions(option) {
       this.pageRadious = angular.isNumber(option.pageRadious) ? option.pageRadious : defaultOptions.pageRadious;
-      this.pageSize = angular.isNumber(option.pageSize) ? option.pageSize : defaultOptions.pageSize;
+      if (angular.isNumber(option.pageSize)) {
+        if (option.pageSizes.indexOf(option.pageSize) > 0) {
+          this.pageSize = option.pageSize;
+        } else {
+          this.pageSize = Math.min.apply(null, option.pageSizes);
+        }
+      } else {
+        this.pageSize = defaultOptions.pageSize;
+      }
       this.emptyTableText = option.emptyTableText;
       this.loadingTableText = option.loadingTableText;
       if (option.uiFramework && (option.uiFramework === 'bootstrap' || option.uiFramework === 'material')) {
         this.uiFramework = option.uiFramework;
       }
       this.method = defaultOptions.method;
-      this.pageSizes = angular.isArray(option.pageSizes) && option.pageSizes.every(function(size){
+      this.pageSizes = angular.isArray(option.pageSizes) && option.pageSizes.every(function (size) {
         return angular.isNumber(size) && size > 0;
-      }) ? option.pageSizes : defaultOptions.pageSizes
+      }) ? option.pageSizes : defaultOptions.pageSizes;
     }
 
     this.$get = function () {

@@ -1,0 +1,9 @@
+<div ng-if="$ctrl.inHeader && ($ctrl.ptableCtrl.uiFramework === 'bootstrap' || !$ctrl.ptableCtrl.uiFramework)" ng-class="{'header-checkbox' : $ctrl.ptableCtrl.uiFramework === 'bootstrap'}">
+	<input type="checkbox" class="cursor-pointer" ng-change="$ctrl.selectAll($ctrl.ptableCtrl.utils.allSelected)" ng-model="$ctrl.ptableCtrl.utils.allSelected">
+</div>
+<div ng-if="!$ctrl.inHeader && ($ctrl.ptableCtrl.uiFramework === 'bootstrap' || !$ctrl.ptableCtrl.uiFramework)" ng-class="{'body-checkbox' : $ctrl.ptableCtrl.uiFramework === 'bootstrap' || !$ctrl.ptableCtrl.uiFramework}">
+	<input type="checkbox" class="cursor-pointer" ng-change="$ctrl.selectItem($ctrl.item)" ng-model="$ctrl.item.isCheck">
+</div>
+<md-checkbox ng-if="$ctrl.inHeader && $ctrl.ptableCtrl.uiFramework === 'material'" ng-change="$ctrl.selectAll($ctrl.ptableCtrl.utils.allSelected)" class="margin-auto" ng-model="$ctrl.ptableCtrl.utils.allSelected" aria-label="">
+</md-checkbox>
+<md-checkbox ng-if="!$ctrl.inHeader && $ctrl.ptableCtrl.uiFramework === 'material'" ng-change="$ctrl.selectItem($ctrl.item)" class="margin-auto" ng-model="$ctrl.item.isCheck" aria-label=""></md-checkbox>

@@ -23,7 +23,7 @@ angular
       };
 
       ctrl.removeSearch = function () {
-        if(!ctrl.filterModel) {
+        if (!ctrl.filterModel) {
           return;
         }
         delete ctrl.filterModel;
