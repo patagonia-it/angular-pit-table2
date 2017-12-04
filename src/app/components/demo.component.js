@@ -16,6 +16,9 @@ angular
         PTColumnBuilder.newColumn('title').withName('test6')
       ];
 
-      ctrl.ptParams = PTParamsBuilder.newParams().withUrl('/posts').withMethod('GET', false);
+      ctrl.ptParams = PTParamsBuilder.newParams().withUrl('/posts').withMethod('GET', false).withSelect();
+
+      ctrl.selectedC = [];
+      ctrl.unSelectedC = [];
     }
   });

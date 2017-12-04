@@ -422,3 +422,36 @@ md-card > md-table-container:last-child {
   border: 1px solid #939393;
   border-radius: 3px;
 }
+
+.th-checkbox {
+  text-align: center;
+  width: 3%;
+}
+
+.header-checkbox {
+  transform: translateY(-50%);
+}
+
+.td-checkbox {
+  position: relative;
+  text-align: center;
+}
+
+.body-checkbox {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 50%;
+  height: 30%;
+  margin: auto;
+}
+
+md-checkbox.margin-auto {
+  margin: auto;
+}
+
+.padding-only-left {
+  padding: 0 0 0 24px;
+}

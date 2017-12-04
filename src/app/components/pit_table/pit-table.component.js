@@ -5,7 +5,9 @@ angular
     bindings: {
       ptColumns: '<',
       ptParameters: '<',
-      ptData: '<'
+      ptData: '<',
+      selectedC: '<',
+      unSelectedC: '<'
     },
     controller: function (pitTable, $log, $http, ENV, $loading) {
       var ctrl = this;
@@ -21,7 +23,8 @@ angular
           totalPages: 0
         },
         search: '',
-        pageSizes: pitTable.pageSizes
+        pageSizes: pitTable.pageSizes,
+        allSelected: false
       };
 
       ctrl.$onInit = function () {
@@ -72,9 +75,14 @@ angular
         ctrl.isLoading = true;
         $http(object).then(function (response) {
           ctrl.ptData = response.data.content;
+          if(ctrl.ptParameters.hasSelect) {
+            ctrl.ptDataTemp = angular.copy(response.data.content);
+          }
           ctrl.utils.pagination.page = ctrl.ptParameters.projection ? response.data.page.number : response.data.number;
           ctrl.utils.pagination.totalRows = ctrl.ptParameters.projection ? response.data.page.totalElements : response.data.totalElements;
           ctrl.utils.pagination.totalPages = ctrl.ptParameters.projection ? response.data.page.totalPages : response.data.totalPages;
+          initSelected(response.data.content);
+          
 
         }, function () {
           $log.error('Ha ocurrido un error al intentar obtener la información.');
@@ -116,6 +124,24 @@ angular
             'md-sort md-sort-icon md-asc': sort === 'asc'
           };
         }
+      };
+
+      var initSelected = function (data) {
+        
+        var cont = 0;
+        angular.forEach(data, function(item, key){
+          if(item.isCheck) {
+            cont++;
+          }
+
+          angular.forEach(ctrl.selectedC, function(value, key){
+            if(item.id == value) {
+              cont++;
+            }
+          });
+        });
+
+        ctrl.utils.allSelected = (cont === data.length) ? true : false;
       };
     }
   });
