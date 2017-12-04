@@ -1,5 +1,5 @@
 <pttoolbar ng-class="{'row': $ctrl.uiFramework === 'bootstrap'}"></pttoolbar>
-<div dw-loading="data" ng-class="{ 'md-table-container' : $ctrl.uiFramework === 'material' }">
+<div dw-loading="data" ng-class="{ 'md-table-container' : $ctrl.uiFramework === 'material', 'container-fluid': $ctrl.uiFramework === 'bootstrap' }">
   <table ng-class="{ 'table table-bordered table-striped table-responsive': $ctrl.uiFramework === 'bootstrap', 'md-table': $ctrl.uiFramework === 'material', 'dw-loading-container': $ctrl.isLoading, 'md-row-select': $ctrl.uiFramework === 'material' && $ctrl.ptParams.hasSelect }">
     <thead ng-class="{ 'md-head': $ctrl.uiFramework === 'material' }">
       <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }">
@@ -17,4 +17,5 @@
       <tr ng-if="!$ctrl.ptData.length" class="text-center"><td colspan="{{ $ctrl.ptColumns.length }}">{{ $ctrl.emptyTableText }}</td></tr>
     </tbody>
   </table>
+  <ptpage></ptpage>
 </div>
