@@ -17,10 +17,7 @@
 <div ng-if="$ctrl.ptableCtrl.uiFramework === 'bootstrap'" class="row">
   <form class="form-inline">
     <div class="col-xs-12 col-sm-6">
-      <label for="size">Mostrar</label>
-      <div class="form-group">
-        <select class="form-control" name="size" id="size" ng-model="$ctrl.size" ng-change="$ctrl.selectSize($ctrl.size)" ng-options="size for size in $ctrl.pageSizes track by size"></select>
-      </div>
+      <ptpsize></ptpsize>
     </div>
     <div class="col-xs-12 col-sm-6 search-control">
       <label for="search">Buscar</label>
@@ -36,11 +33,7 @@
 
 <div ng-if="!$ctrl.ptableCtrl.uiFramework" class="height-no-bootstrap">
   <div class="size-control">
-    <label>
-      Mostrar
-      <select ng-model="$ctrl.size" ng-change="$ctrl.selectSize($ctrl.size)" ng-options="size for size in $ctrl.pageSizes track by size"></select>
-      entradas
-    </label>
+    <ptpsize></ptpsize>
   </div>
   <div class="search-control">
     <label>

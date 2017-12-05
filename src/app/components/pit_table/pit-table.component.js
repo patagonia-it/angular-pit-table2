@@ -77,11 +77,12 @@ angular
           ctrl.ptData = response.data.content;
           if (ctrl.ptParameters.hasSelect) {
             ctrl.ptDataTemp = angular.copy(response.data.content);
+            initSelected(response.data.content);
           }
           ctrl.utils.pagination.page = ctrl.ptParameters.projection ? response.data.page.number : response.data.number;
           ctrl.utils.pagination.totalRows = ctrl.ptParameters.projection ? response.data.page.totalElements : response.data.totalElements;
           ctrl.utils.pagination.totalPages = ctrl.ptParameters.projection ? response.data.page.totalPages : response.data.totalPages;
-          initSelected(response.data.content);
+          
         }, function () {
           $log.error('Ha ocurrido un error al intentar obtener la información.');
         }).finally(function () {
@@ -133,7 +134,15 @@ angular
 
           angular.forEach(ctrl.selectedC, function (value) {
             if (item.id === value) {
+              item.isCheck = true;
               cont++;
+            }
+          });
+
+          angular.forEach(ctrl.unSelectedC, function (value) {
+            if (item.id === value) {
+              item.isCheck = false;
+              cont--;
             }
           });
         });

@@ -1,10 +1,10 @@
 angular.module('angular-pit-table')
 .constant('ANGULAR_PIT_TABLE', {
   pageRadious: 2,
-  pageSize: 30,
+  pageSize: 10,
   emptyTableText: 'Ningún dato disponible en esta tabla.',
   loadingTableText: 'Cargando datos...',
-  uiFramework: 'bootstrap',
+  uiFramework: 'material',
   pageSizes: [
     10,
     25,
