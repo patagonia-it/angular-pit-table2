@@ -14,8 +14,9 @@ angular
     	};
 
     	ctrl.showInfoMaterial = function () {
-    		return ((ctrl.ptableCtrl.utils.pagination.page * ctrl.ptableCtrl.utils.pagination.size) + 1) +' - '+ 
-    		(ctrl.ptableCtrl.utils.pagination.totalRows%ctrl.ptableCtrl.utils.pagination.size === 0 ? (ctrl.ptableCtrl.utils.pagination.page + 1) * ctrl.ptableCtrl.utils.pagination.size : ctrl.ptableCtrl.utils.pagination.totalRows) +' de '+ (ctrl.ptableCtrl.utils.pagination.totalRows); 
+    		var from = (ctrl.ptableCtrl.utils.pagination.page * ctrl.ptableCtrl.utils.pagination.size) + 1;
+    		var to = (ctrl.ptableCtrl.utils.pagination.page * ctrl.ptableCtrl.utils.pagination.size) + ctrl.ptableCtrl.utils.pagination.size;
+    		return from +' - '+ (to > ctrl.ptableCtrl.utils.pagination.totalRows ? ctrl.ptableCtrl.utils.pagination.totalRows : to) +' de '+ ctrl.ptableCtrl.utils.pagination.totalRows;
     	};
 
     	ctrl.previous = function () {
