@@ -5,7 +5,7 @@ angular
     bindings: {
       ptColumns: '<',
       ptParameters: '<',
-      ptData: '<',
+      ptData: '=',
       selectedC: '<',
       unSelectedC: '<'
     },
