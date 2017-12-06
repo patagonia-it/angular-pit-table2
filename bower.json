@@ -22,6 +22,11 @@
         "./angular-loading.js",
         "./angular-loading.css"
       ]
+    },
+    "material-design-icons": {
+      "main": [
+        "./iconfont/material-icons.css"
+      ]
     }
   }
 }
