@@ -1,5 +1,5 @@
 angular
-  .module('angular-pit-table', ['ui.router', 'darthwade.dwLoading', 'ngMaterial'])
+  .module('angular-pit-table', ['ui.router', 'darthwade.dwLoading', 'ngMaterial', 'ngCsv'])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode(true).hashPrefix('!');
     $urlRouterProvider.otherwise('/demo');

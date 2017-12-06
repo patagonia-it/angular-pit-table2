@@ -74,15 +74,15 @@ angular
         $loading.start('data');
         ctrl.isLoading = true;
         $http(object).then(function (response) {
-          ctrl.ptData = response.data.content;
+          var data = ctrl.ptParameters.projection ? response.data._embedded[ctrl.ptParameters.projection] : response.data.content;
+          ctrl.ptData = data;
           if (ctrl.ptParameters.hasSelect) {
-            ctrl.ptDataTemp = angular.copy(response.data.content);
-            initSelected(response.data.content);
+            ctrl.ptDataTemp = angular.copy(data);
+            initSelected(data);
           }
           ctrl.utils.pagination.page = ctrl.ptParameters.projection ? response.data.page.number : response.data.number;
           ctrl.utils.pagination.totalRows = ctrl.ptParameters.projection ? response.data.page.totalElements : response.data.totalElements;
           ctrl.utils.pagination.totalPages = ctrl.ptParameters.projection ? response.data.page.totalPages : response.data.totalPages;
-
         }, function () {
           $log.error('Ha ocurrido un error al intentar obtener la información.');
         }).finally(function () {
@@ -127,7 +127,7 @@ angular
 
       ctrl.thMdIcon = function (sort) {
         if (angular.isDefined(sort)) {
-          if(sort === 'natural') {
+          if (sort === 'natural') {
             return;
           }
           return sort === 'desc' ? 'arrow_downward' : 'arrow_upward';

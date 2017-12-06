@@ -49,6 +49,13 @@ function ptColumnBuilder() {
 
 function ptParamsBuilder(pitTable) {
   var PTParams = {
+    tableName: function (name) {
+      if (!angular.isString(name) || name === '') {
+        throw new Error('name expected string but received ' + typeof name);
+      }
+      this.name = name;
+      return this;
+    },
     withParam: function (key, value) {
       if (!angular.isString(key) || key === '') {
         throw new Error('key expected string but received ' + typeof key);
