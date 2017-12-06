@@ -14,6 +14,7 @@ angular
       	};
 
       	ctrl.selectSize = function (size) {
+      		ctrl.ptableCtrl.utils.pagination.page = 0;
         	ctrl.ptableCtrl.utils.pagination.size = size;
         	ctrl.ptableCtrl.ptParameters.loadData();
       	};

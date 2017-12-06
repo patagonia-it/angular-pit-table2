@@ -9,7 +9,7 @@
 <div ng-if="$ctrl.ptableCtrl.uiFramework === 'material'" class="md-table-pagination">
 	<div class="item-md-table-paginator">
 		<div class="text-rows-per-page">Página:</div>
-		<md-select class="md-table-select md-select-paginator" ng-model="$ctrl.currentPage" ng-change="$ctrl.goToPage($ctrl.currentPage)">
+		<md-select class="md-table-select md-select-paginator" ng-model="$ctrl.ptableCtrl.utils.pagination.page" ng-change="$ctrl.goToPage()">
 			<md-option ng-repeat="page in $ctrl.getSelectPages()" ng-value="page">{{ page + 1 }}</md-option>
 		</md-select>
 	</div>
@@ -20,10 +20,10 @@
 		<span> {{ $ctrl.showInfoMaterial() }} </span>
 	</div>
 	<div class="item-md-table-paginator">
-		<button class="md-icon-button md-button md-ink-ripple margin-0" type="button" ng-click="$ctrl.previous()" ng-disabled="$ctrl.ptableCtrl.utils.pagination.page == 1">
+		<button class="md-icon-button md-button md-ink-ripple margin-0" type="button" ng-click="$ctrl.previous()" ng-disabled="$ctrl.ptableCtrl.utils.pagination.page == 0">
           <md-icon class="material-icons"><i class="material-icons">keyboard_arrow_left</i></md-icon>
         </button>
-        <button style="margin: 0;" class="md-icon-button md-button md-ink-ripple margin-0" type="button" ng-click="$ctrl.next()" ng-disabled="$ctrl.ptableCtrl.utils.pagination.page == $ctrl.ptableCtrl.utils.pagination.totalPages">
+        <button style="margin: 0;" class="md-icon-button md-button md-ink-ripple margin-0" type="button" ng-click="$ctrl.next()" ng-disabled="$ctrl.ptableCtrl.utils.pagination.page == ($ctrl.ptableCtrl.utils.pagination.totalPages - 1)">
           <md-icon class="material-icons"><i class="material-icons">keyboard_arrow_right</i></md-icon>
         </button>
 	</div>

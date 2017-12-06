@@ -20,13 +20,11 @@ angular
 
     	ctrl.previous = function () {
     		ctrl.ptableCtrl.utils.pagination.page--;
-    		ctrl.currentPage = ctrl.ptableCtrl.utils.pagination.page;
     		ctrl.ptableCtrl.ptParameters.loadData();
     	};
 
     	ctrl.next = function () {
     		ctrl.ptableCtrl.utils.pagination.page++;
-    		ctrl.currentPage = ctrl.ptableCtrl.utils.pagination.page;
     		ctrl.ptableCtrl.ptParameters.loadData();
     	};
 
@@ -35,12 +33,11 @@ angular
 	    	for(var i = 0; i < ctrl.ptableCtrl.utils.pagination.totalPages; i++) {
 	    		pages.push(i);
 	    	}
-	    	ctrl.currentPage = ctrl.currentPage ? ctrl.currentPage : pages[0];
 	    	return pages;
 		};
 
 		ctrl.goToPage = function (page) {
-			ctrl.ptableCtrl.utils.pagination.page = page;
+			//ctrl.ptableCtrl.utils.pagination.page = page;
     		ctrl.ptableCtrl.ptParameters.loadData();
 		};    	
     }
