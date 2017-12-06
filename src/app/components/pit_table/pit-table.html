@@ -23,7 +23,7 @@
           <td ng-if="$ctrl.ptParameters.hasSelect" class="td-checkbox" ng-class="{ 'md-cell md-checkbox-cell': $ctrl.uiFramework === 'material' }">
             <ptcheckbox in-header="false" item="data"></ptcheckbox>
           </td>
-          <td ng-repeat="column in $ctrl.ptColumns" ng-class="{ 'md-cell': $ctrl.uiFramework === 'material' }">{{ data[column.id] }}</td>
+          <td ng-repeat="column in $ctrl.ptColumns" ng-class="{ 'md-cell': $ctrl.uiFramework === 'material' }" class="{{ column.clazz }}">{{ data[column.id] }}</td>
         </tr>
         <tr ng-if="!$ctrl.ptData.length" class="text-center"><td colspan="{{ $ctrl.ptColumns.length }}">{{ $ctrl.emptyTableText }}</td></tr>
       </tbody>
