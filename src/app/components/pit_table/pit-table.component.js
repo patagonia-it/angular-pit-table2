@@ -82,7 +82,7 @@ angular
           ctrl.utils.pagination.page = ctrl.ptParameters.projection ? response.data.page.number : response.data.number;
           ctrl.utils.pagination.totalRows = ctrl.ptParameters.projection ? response.data.page.totalElements : response.data.totalElements;
           ctrl.utils.pagination.totalPages = ctrl.ptParameters.projection ? response.data.page.totalPages : response.data.totalPages;
-          
+
         }, function () {
           $log.error('Ha ocurrido un error al intentar obtener la información.');
         }).finally(function () {
@@ -114,14 +114,23 @@ angular
       ctrl.thIconClass = function (sort) {
         if (angular.isDefined(sort)) {
           return ctrl.uiFramework === 'bootstrap' ? {
-            'pull-right fa fa-sort': sort === 'natural',
-            'pull-right fa fa-sort-desc': sort === 'desc',
-            'pull-right fa fa-sort-asc': sort === 'asc'
+            'fa-sort': sort === 'natural',
+            'fa-sort-desc': sort === 'desc',
+            'fa-sort-asc': sort === 'asc'
           } : {
-            'md-sort md-sort-icon': sort === 'natural',
-            'md-sort md-sort-icon md-desc': sort === 'desc',
-            'md-sort md-sort-icon md-asc': sort === 'asc'
+            '': sort === 'natural',
+            'md-desc': sort === 'desc',
+            'md-asc': sort === 'asc'
           };
+        }
+      };
+
+      ctrl.thMdIcon = function (sort) {
+        if (angular.isDefined(sort)) {
+          if(sort === 'natural') {
+            return;
+          }
+          return sort === 'desc' ? 'arrow_downward' : 'arrow_upward';
         }
       };
 
