@@ -5,9 +5,6 @@ angular
     require: {
       ptableCtrl: '^ptable'
     },
-    bindings: {
-    	currentPage: '='
-    },
     controller: function () {
     	var ctrl = this;
 
@@ -18,7 +15,6 @@ angular
 
       	ctrl.selectSize = function (size) {
       		ctrl.ptableCtrl.utils.pagination.page = 0;
-      		ctrl.currentPage = 0;
         	ctrl.ptableCtrl.utils.pagination.size = size;
         	ctrl.ptableCtrl.ptParameters.loadData();
       	};
