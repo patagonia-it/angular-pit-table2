@@ -32,7 +32,7 @@ angular
 
     	ctrl.getSelectPages = function () {
 			var pages = [];
-	    	for(var i = 1; i < ctrl.ptableCtrl.utils.pagination.totalPages; i++) {
+	    	for(var i = 0; i < ctrl.ptableCtrl.utils.pagination.totalPages; i++) {
 	    		pages.push(i);
 	    	}
 	    	ctrl.currentPage = ctrl.currentPage ? ctrl.currentPage : pages[0];

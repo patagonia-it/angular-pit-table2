@@ -9,6 +9,7 @@ angular
       var ctrl = this;
 
       ctrl.search = function (text) {
+      	ctrl.ptableCtrl.utils.pagination.page = 0;
         ctrl.ptableCtrl.utils.search = text;
         ctrl.ptableCtrl.ptParameters.loadData();
       };
