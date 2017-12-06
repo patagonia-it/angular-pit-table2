@@ -1,15 +1,5 @@
 angular
-  .module('angular-pit-table', ['ui.router', 'darthwade.dwLoading', 'ngMaterial', 'ngCsv'])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
-    $locationProvider.html5Mode(true).hashPrefix('!');
-    $urlRouterProvider.otherwise('/demo');
-
-    $stateProvider
-      .state('demo', {
-        url: '/demo',
-        component: 'demo'
-      });
-  })
+  .module('angular-pit-table', ['darthwade.dwLoading', 'ngMaterial', 'ngCsv'])
   .config(function (pitTableProvider, ANGULAR_PIT_TABLE) {
     pitTableProvider.setOptions(ANGULAR_PIT_TABLE);
   })

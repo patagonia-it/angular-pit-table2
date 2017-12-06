@@ -22,7 +22,7 @@
   </head>
 
   <body ng-app="angular-pit-table">
-    <ui-view></ui-view>
+    <ptable pt-columns="$ctrl.ptColumns" pt-data="$ctrl.data" pt-parameters="$ctrl.ptParams" selected-c="$ctrl.selectedC" un-selected-c="$ctrl.unSelectedC"></ptable>
   </body>
 
   <!-- build:js({.tmp,src}) scripts/vendor.js -->
