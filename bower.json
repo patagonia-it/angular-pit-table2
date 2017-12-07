@@ -22,7 +22,7 @@
     "./dist/styles/angular-pit-table.css",
     "./dist/styles/angular-pit-table_vendor.css"
   ],
-  "ignore":["./development.json"],
+  "ignore":["development.json"],
   "overrides": {
     "angular-loading": {
       "main": [
