@@ -19,8 +19,8 @@
   "main": [
     "./dist/scripts/angular-pit-table.js",
     "./dist/scripts/angular-pit-table_vendor.js",
-    "./dist/scripts/angular-pit-table.css",
-    "./dist/scripts/angular-pit-table_vendor.css"
+    "./dist/styles/angular-pit-table.css",
+    "./dist/styles/angular-pit-table_vendor.css"
   ],
   "overrides": {
     "angular-loading": {
