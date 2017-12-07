@@ -16,6 +16,12 @@
   "resolutions": {
     "angular": "1.6.6"
   },
+  "main": [
+    "./dist/scripts/angular-pit-table.js",
+    "./dist/scripts/angular-pit-table_vendor.js",
+    "./dist/scripts/angular-pit-table.css",
+    "./dist/scripts/angular-pit-table_vendor.css"
+  ],
   "overrides": {
     "angular-loading": {
       "main": [
