@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <title>Angular PIT Table</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet" href="styles/angular-pit-table_vendor.css">
+
+    <link rel="stylesheet" href="styles/angular-pit-table.css">
+  </head>
+
+  <body ng-app="angular-pit-table">
+    <ptable pt-columns="$ctrl.ptColumns" pt-data="$ctrl.data" pt-parameters="$ctrl.ptParams" selected-c="$ctrl.selectedC" un-selected-c="$ctrl.unSelectedC"></ptable>
+  </body>
+
+  <script src="scripts/angular-pit-table_vendor.js"></script>
+
+  <script src="scripts/angular-pit-table.js"></script>
+</html>
+
