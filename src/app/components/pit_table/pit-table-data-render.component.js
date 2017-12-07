@@ -2,11 +2,11 @@ angular
     .module('angular-pit-table')
     .component('ptdrender', {
         bindings: {
-            ptData: '>',
-            directiveName: '>'
+            ptData: '<',
+            directiveName: '<'
         },
-        template: '<{{ $ctrl.directiveName }} row-data="$ctrl.ptData"></{{ $ctrl.directiveName }}>',
-        controller: function () {
+        controller: function ($scope, $element, $attrs, $compile) {
             var ctrl = this;
+            $element.append($compile('<'+ctrl.directiveName+ ' row-data="$ctrl.ptData"></'+ctrl.directiveName+'>')($scope));
         }
     });
