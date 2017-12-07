@@ -5,8 +5,12 @@ angular
 
 function ptColumnBuilder() {
   var PTColumn = {
-    renderWith: function () {
-
+    renderWith: function (render) {
+      if (!angular.isString(render) || render === '') {
+        throw new Error('render expected string but received ' + typeof render);
+      }
+      this.render = render;
+      return this;
     },
     withClass: function (clazz) {
       if (!angular.isString(clazz) || clazz === '') {
