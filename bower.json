@@ -11,7 +11,7 @@
     "material-design-icons": "3.0.1",
     "ng-csv": "^0.3.6"
   },
-  "ignore": ["development.json"]
+  "ignore": ["development.json"],
   "devDependencies": {
     "angular-mocks": "1.6.6"
   },
