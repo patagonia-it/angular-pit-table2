@@ -19,6 +19,13 @@ function ptColumnBuilder() {
       this.clazz = clazz;
       return this;
     },
+    withThClass: function (thClazz) {
+      if (!angular.isString(thClazz) || thClazz === '') {
+        throw new Error('thClazz expected string but received ' + typeof thClazz);
+      }
+      this.thClazz = thClazz;
+      return this;
+    },
     withName: function (name) {
       if (!angular.isString(name) || name === '') {
         throw new Error('name expected string but received ' + typeof name);
