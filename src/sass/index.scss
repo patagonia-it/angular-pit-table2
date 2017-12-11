@@ -46,7 +46,7 @@ ptable > div.container-fluid table.table > thead > tr > th {
 }
 
 /* PIT TABLE MATERIAL */
-ptable table > thead > tr > th:not(.md-active) > span {
+ptable table > thead > tr > th:not(.md-sort) > span {
   cursor: default;
 }
 ptable > div.md-table-container {
@@ -75,15 +75,15 @@ ptable > div.md-table-container table.md-table th.md-column {
 }
 ptable > div.md-table-container table.md-table th.md-column fieldset {
   display: inline-block;
-}
-ptable > div.md-table-container table.md-table th.md-column fieldset md-icon {
-  font-size: 16px !important;
+  vertical-align: bottom;
 }
 ptable > div.md-table-container table.md-table th.md-column md-icon {
   height: 16px;
   width: 16px;
   font-size: 16px !important;
   line-height: 16px !important;
+  min-height: 16px;
+  min-width: 16px;
 }
 ptable > div.md-table-container table.md-table th.md-column md-icon.md-sort-icon {
   color: rgba(0, 0, 0, 0.26);

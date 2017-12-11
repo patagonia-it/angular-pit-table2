@@ -124,12 +124,6 @@ angular
         }
       };
 
-      ctrl.thMdIcon = function (sort) {
-        if (angular.isDefined(sort)) {
-          return sort === 'desc' ? 'arrow_downward' : 'arrow_upward';
-        }
-      };
-
       var initSelected = function (data) {
         var cont = 0;
         angular.forEach(data, function (item) {
