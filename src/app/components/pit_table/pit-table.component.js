@@ -39,7 +39,7 @@ angular
         ctrl.utils.sort = [];
         angular.forEach(ctrl.ptColumns, function (ptColumn) {
           if (ptColumn.sortable && angular.isDefined(ptColumn.sort)) {
-            ctrl.utils.sort.push(ptColumn.id + ',' + (ptColumn.sort === 'natural') ? 'asc' : ptColumn.sort);
+            ctrl.utils.sort.push(ptColumn.id + ',' + ((ptColumn.sort === 'natural') ? 'asc' : ptColumn.sort));
           }
         });
       };
