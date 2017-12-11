@@ -31,22 +31,22 @@ angular
             var indexAdd = -1;
             var indexRemove = -1;
             if (selected) {
-              indexAdd = ctrl.ptableCtrl.selectedC.indexOf(value.id);
+              indexAdd = ctrl.ptableCtrl.selectedC.indexOf(value[ctrl.ptableCtrl.ptParameters.selectId]);
               if (!value.isCheck && indexAdd < 0) {
-                ctrl.ptableCtrl.selectedC.push(value.id);
+                ctrl.ptableCtrl.selectedC.push(value[ctrl.ptableCtrl.ptParameters.selectId.selectId]);
               }
 
-              indexRemove = ctrl.ptableCtrl.unSelectedC.indexOf(value.id);
+              indexRemove = ctrl.ptableCtrl.unSelectedC.indexOf(value[ctrl.ptableCtrl.ptParameters.selectId]);
               if (indexRemove > -1) {
                 ctrl.ptableCtrl.unSelectedC.splice(indexRemove, 1);
               }
             } else {
-              indexRemove = ctrl.ptableCtrl.selectedC.indexOf(value.id);
+              indexRemove = ctrl.ptableCtrl.selectedC.indexOf(value[ctrl.ptableCtrl.ptParameters.selectId]);
               if (value.isCheck && indexRemove < 0) {
-                ctrl.ptableCtrl.unSelectedC.push(value.id);
+                ctrl.ptableCtrl.unSelectedC.push(value[ctrl.ptableCtrl.ptParameters.selectId]);
               }
 
-              indexAdd = ctrl.ptableCtrl.selectedC.indexOf(value.id);
+              indexAdd = ctrl.ptableCtrl.selectedC.indexOf(value[ctrl.ptableCtrl.ptParameters.selectId]);
               if (indexAdd > -1) {
                 ctrl.ptableCtrl.selectedC.splice(indexAdd, 1);
               }
@@ -59,11 +59,11 @@ angular
         var exists = false;
         var arraySplice = item.isCheck ? ctrl.ptableCtrl.unSelectedC : ctrl.ptableCtrl.selectedC;
         var arrayPush = item.isCheck ? ctrl.ptableCtrl.selectedC : ctrl.ptableCtrl.unSelectedC;
-        var indexSplice = arraySplice.indexOf(item.id);
+        var indexSplice = arraySplice.indexOf(item[ctrl.ptableCtrl.ptParameters.selectId]);
 
         angular.forEach(ctrl.ptableCtrl.ptDataTemp, function (value) {
           var isCheck = item.isCheck ? !value.isCheck : value.isCheck;
-          if (item.id === value.id && isCheck) {
+          if (item[ctrl.ptableCtrl.ptParameters.selectId] === value[ctrl.ptableCtrl.ptParameters.selectId] && isCheck) {
             exists = true;
           }
         });
@@ -73,7 +73,7 @@ angular
         }
 
         if (exists) {
-          arrayPush.push(item.id);
+          arrayPush.push(item[ctrl.ptableCtrl.ptParameters.selectId]);
         }
       }
     }

@@ -120,8 +120,11 @@ function ptParamsBuilder(pitTable) {
       this.projection = projection;
       return this;
     },
-    withSelect: function () {
-      this.hasSelect = true;
+    withSelect: function (fieldName) {
+      if (!angular.isString(fieldName) || fieldName === '') {
+        throw new Error('fieldName expected string but received ' + typeof fieldName);
+      }
+      this.selectId = fieldName;
       return this;
     }
   };
@@ -132,7 +135,6 @@ function ptParamsBuilder(pitTable) {
       params.params = {};
       params.method = pitTable.method;
       params.inBody = false;
-      params.hasSelect = false;
 
       return params;
     },

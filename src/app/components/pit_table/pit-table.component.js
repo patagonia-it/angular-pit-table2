@@ -76,7 +76,7 @@ angular
         $http(object).then(function (response) {
           var data = ctrl.ptParameters.projection ? response.data._embedded[ctrl.ptParameters.projection] : response.data.content;
           ctrl.ptData = data;
-          if (ctrl.ptParameters.hasSelect) {
+          if (ctrl.ptParameters.selectId) {
             ctrl.ptDataTemp = angular.copy(data);
             initSelected(data);
           }
@@ -132,14 +132,14 @@ angular
           }
 
           angular.forEach(ctrl.selectedC, function (value) {
-            if (item.id === value) {
+            if (item[ctrl.ptParameters.selectId] === value) {
               item.isCheck = true;
               cont++;
             }
           });
 
           angular.forEach(ctrl.unSelectedC, function (value) {
-            if (item.id === value) {
+            if (item[ctrl.ptParameters.selectId] === value) {
               item.isCheck = false;
               cont--;
             }
