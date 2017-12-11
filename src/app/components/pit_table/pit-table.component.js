@@ -118,18 +118,14 @@ angular
             'fa-sort-desc': sort === 'desc',
             'fa-sort-asc': sort === 'asc'
           } : {
-            '': sort === 'natural',
-            'md-desc': sort === 'desc',
-            'md-asc': sort === 'asc'
+            'md-asc': sort === 'natural' || sort === 'asc',
+            'md-desc': sort === 'desc'
           };
         }
       };
 
       ctrl.thMdIcon = function (sort) {
         if (angular.isDefined(sort)) {
-          if (sort === 'natural') {
-            return;
-          }
           return sort === 'desc' ? 'arrow_downward' : 'arrow_upward';
         }
       };

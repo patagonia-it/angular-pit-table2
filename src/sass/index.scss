@@ -79,38 +79,38 @@ ptable > div.md-table-container table.md-table th.md-column fieldset {
 ptable > div.md-table-container table.md-table th.md-column fieldset md-icon {
   font-size: 16px !important;
 }
-ptable > div.md-table-container table.md-table th.md-column .md-icon {
+ptable > div.md-table-container table.md-table th.md-column md-icon {
   height: 16px;
   width: 16px;
   font-size: 16px !important;
   line-height: 16px !important;
 }
-ptable > div.md-table-container table.md-table th.md-column .md-icon.md-sort-icon {
+ptable > div.md-table-container table.md-table th.md-column md-icon.md-sort-icon {
   color: rgba(0, 0, 0, 0.26);
   opacity: 0;
   transition: -webkit-transform 0.25s, opacity 0.25s;
   transition: transform 0.25s, opacity 0.25s;
 }
-ptable > div.md-table-container table.md-table th.md-column .md-icon.md-sort-icon.md-asc {
+ptable > div.md-table-container table.md-table th.md-column md-icon.md-sort-icon.md-asc {
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
 }
-ptable > div.md-table-container table.md-table th.md-column .md-icon.md-sort-icon.md-desc {
+ptable > div.md-table-container table.md-table th.md-column md-icon.md-sort-icon.md-desc {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-ptable > div.md-table-container table.md-table th.md-column .md-icon:not(:first-child) {
+ptable > div.md-table-container table.md-table th.md-column md-icon:not(:first-child) {
   margin-left: 8px;
 }
-ptable > div.md-table-container table.md-table th.md-column .md-icon:not(:last-child) {
+ptable > div.md-table-container table.md-table th.md-column md-icon:not(:last-child) {
   margin-right: 8px;
 }
 ptable > div.md-table-container table.md-table th.md-column.md-active,
-ptable > div.md-table-container table.md-table th.md-column.md-active .md-icon {
+ptable > div.md-table-container table.md-table th.md-column.md-active md-icon {
   color: rgba(0, 0, 0, 0.87);
 }
-ptable > div.md-table-container table.md-table th.md-column:hover .md-icon.md-sort-icon,
-ptable > div.md-table-container table.md-table th.md-column.md-active .md-icon.md-sort-icon {
+ptable > div.md-table-container table.md-table th.md-column md-icon.md-sort-icon,
+ptable > div.md-table-container table.md-table th.md-column.md-active md-icon.md-sort-icon {
   opacity: 1;
 }
 ptable > div.md-table-container table.md-table tr.md-row[ng\:repeat].ng-leave,
