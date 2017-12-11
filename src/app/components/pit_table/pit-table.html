@@ -7,10 +7,10 @@
           <th ng-if="$ctrl.ptParameters.hasSelect" ng-class="{'th-checkbox' : $ctrl.uiFramework === 'bootstrap' || !$ctrl.uiFramework, 'padding-only-left' : $ctrl.uiFramework === 'material'}">
             <ptcheckbox in-header="true"></ptcheckbox>
           </th>
-          <th ng-repeat="column in $ctrl.ptColumns" class="{{ column.thClazz }}" ng-class="{ 'sortable': column.sort && $ctrl.ptData.length && $ctrl.uiFramework === 'bootstrap', 'md-sort': column.sort && $ctrl.ptData.length && $ctrl.uiFramework === 'material', 'md-column': $ctrl.uiFramework === 'material', 'md-active': column.sort && column.sort !== 'natural' }">
+          <th ng-repeat="column in $ctrl.ptColumns" class="{{ column.thClazz }}" ng-class="{ 'sortable': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'bootstrap', 'md-sort': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'material', 'md-column': $ctrl.uiFramework === 'material', 'md-active': $ctrl.uiFramework === 'material' && column.sortable && column.sort !== 'natural' }">
             <span ng-click="$ctrl.columnOrder(column)">
               {{ column.name }}
-              <fieldset ng-if="column.sort && $ctrl.ptData.length">
+              <fieldset ng-if="column.sortable && $ctrl.ptData.length">
                 <i class="pull-right fa " ng-class="$ctrl.thIconClass(column.sort)" ng-if="$ctrl.uiFramework === 'bootstrap'"></i>
                 <md-icon class="md-sort-icon" ng-class="$ctrl.thIconClass(column.sort)" ng-if="$ctrl.uiFramework === 'material'">arrow_upward</md-icon>
                 </fieldset>

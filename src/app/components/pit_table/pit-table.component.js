@@ -38,8 +38,8 @@ angular
       var getSort = function () {
         ctrl.utils.sort = [];
         angular.forEach(ctrl.ptColumns, function (ptColumn) {
-          if (ptColumn.sort === 'asc' || ptColumn.sort === 'desc') {
-            ctrl.utils.sort.push(ptColumn.id + ',' + ptColumn.sort);
+          if (ptColumn.sortable && angular.isDefined(ptColumn.sort)) {
+            ctrl.utils.sort.push(ptColumn.id + ',' + (ptColumn.sort === 'natural') ? 'asc' : ptColumn.sort);
           }
         });
       };

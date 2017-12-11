@@ -34,10 +34,14 @@ function ptColumnBuilder() {
       return this;
     },
     withOrder: function (sort) {
-      if (angular.isDefined(sort) && sort.toLowerCase() !== 'asc' && sort.toLowerCase() !== 'desc') {
+      if (angular.isUndefined(sort) || (sort.toLowerCase() !== 'asc' && sort.toLowerCase() !== 'desc')) {
         throw new Error('sort expected string with value "asc" or "desc" but received ' + typeof sort);
       }
-      this.sort = angular.isDefined(sort) ? sort.toLowerCase() : 'natural';
+      this.sort = sort.toLowerCase();
+      return this;
+    },
+    notSortable: function () {
+      this.sortable = false;
       return this;
     }
   };
@@ -51,6 +55,8 @@ function ptColumnBuilder() {
       var column = Object.create(PTColumn);
       column.id = id;
       column.name = id;
+      column.sortable = true;
+      column.sort = 'natural';
 
       return column;
     },
