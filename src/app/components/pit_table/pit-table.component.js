@@ -146,7 +146,7 @@ angular
           });
         });
 
-        ctrl.utils.allSelected = (cont === data.length);
+        ctrl.utils.allSelected = (cont === data.length && data.length > 0);
       };
     }
   });

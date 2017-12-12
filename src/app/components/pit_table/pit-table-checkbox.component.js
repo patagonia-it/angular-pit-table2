@@ -22,7 +22,7 @@ angular
             }
           });
 
-          ctrl.ptableCtrl.utils.allSelected = (cont === ctrl.ptableCtrl.ptData.length);
+          ctrl.ptableCtrl.utils.allSelected = (cont === ctrl.ptableCtrl.ptData.length && ctrl.ptableCtrl.ptData.length > 0);
         };
 
         ctrl.selectAll = function (selected) {

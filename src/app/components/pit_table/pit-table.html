@@ -4,7 +4,7 @@
     <table ng-class="{ 'table table-bordered table-striped table-responsive': $ctrl.uiFramework === 'bootstrap', 'md-table': $ctrl.uiFramework === 'material', 'md-row-select': $ctrl.uiFramework === 'material' && $ctrl.ptParams.selectId, 'dw-loading-container': $ctrl.isLoading }">
       <thead ng-class="{ 'md-head': $ctrl.uiFramework === 'material' }">
         <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }">
-          <th ng-if="$ctrl.ptParameters.selectId" ng-class="{'th-checkbox' : $ctrl.uiFramework === 'bootstrap' || !$ctrl.uiFramework, 'padding-only-left' : $ctrl.uiFramework === 'material'}">
+          <th ng-if="$ctrl.ptParameters.selectId && $ctrl.ptData.length" ng-class="{'th-checkbox' : $ctrl.uiFramework === 'bootstrap' || !$ctrl.uiFramework, 'padding-only-left' : $ctrl.uiFramework === 'material'}">
             <ptcheckbox in-header="true"></ptcheckbox>
           </th>
           <th ng-repeat="column in $ctrl.ptColumns" class="{{ column.thClazz }}" ng-class="{ 'sortable': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'bootstrap', 'md-sort': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'material', 'md-column': $ctrl.uiFramework === 'material', 'md-active': $ctrl.uiFramework === 'material' && column.sortable && column.sort !== 'natural' }">
