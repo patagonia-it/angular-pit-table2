@@ -9,9 +9,9 @@ angular
       var ctrl = this;
 
       ctrl.search = function (text) {
-        ctrl.ptableCtrl.utils.pagination.page = 0;
+  		ctrl.ptableCtrl.utils.pagination.page = 0;
         ctrl.ptableCtrl.utils.search = text;
-        ctrl.ptableCtrl.ptParameters.loadData();
+        ctrl.ptableCtrl.ptParameters.loadData();      	      
       };
 
       ctrl.removeSearch = function () {
@@ -28,6 +28,16 @@ angular
           url: ENV.backendUrl + ctrl.ptableCtrl.ptParameters.url,
           method: 'GET'
         };
+
+        object.params = {
+          sort: ctrl.ptableCtrl.utils.sort,
+          page: ctrl.ptableCtrl.utils.pagination.page,
+          size: ctrl.ptableCtrl.utils.pagination.size
+        };
+
+        if (ctrl.ptableCtrl.utils.search) {
+          object.params.search = ctrl.ptableCtrl.utils.search;
+        }
 
         if (ctrl.ptableCtrl.ptParameters.projection) {
           object.params = {projection: ctrl.ptableCtrl.ptParameters.projection};
