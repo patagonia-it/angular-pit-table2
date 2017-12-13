@@ -8,7 +8,7 @@ angular
       ctrl.ptColumns = [
         PTColumnBuilder.newColumn('id'),
         PTColumnBuilder.newColumn('title').withName('Título').withOrder('asc').withClass('text-center'),
-        PTColumnBuilder.newColumn('body').withName('Contenido').withOrder(),
+        PTColumnBuilder.newColumn('body').withName('Contenido').withOrder('asc'),
         PTColumnBuilder.newColumn('userId').withName('Usuario'),
         PTColumnBuilder.newColumn('title').withName('test4'),
         PTColumnBuilder.newColumn('title').withName('test7'),
@@ -16,7 +16,7 @@ angular
         PTColumnBuilder.newColumn('title').withName('test6')
       ];
 
-      ctrl.ptParams = PTParamsBuilder.newParams().withUrl('/content').withMethod('GET', false).withSelect();
+      ctrl.ptParams = PTParamsBuilder.newParams().withUrl('/content').withMethod('GET', false);
 
       ctrl.selectedC = [];
       ctrl.unSelectedC = [];

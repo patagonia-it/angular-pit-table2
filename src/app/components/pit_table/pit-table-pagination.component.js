@@ -38,7 +38,6 @@ angular
 		};
 
 		ctrl.goToPage = function (page) {
-			//ctrl.ptableCtrl.utils.pagination.page = page;
     		ctrl.ptableCtrl.ptParameters.loadData();
 		};    	
     }

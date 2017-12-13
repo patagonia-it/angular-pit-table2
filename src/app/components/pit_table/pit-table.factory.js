@@ -126,6 +126,10 @@ function ptParamsBuilder(pitTable) {
       }
       this.selectId = fieldName;
       return this;
+    },
+    noMultipleOrder: function () {
+      this.multipleOrder = false;
+      return this;
     }
   };
 
@@ -135,6 +139,7 @@ function ptParamsBuilder(pitTable) {
       params.params = {};
       params.method = pitTable.method;
       params.inBody = false;
+      params.multipleOrder = true;
 
       return params;
     },

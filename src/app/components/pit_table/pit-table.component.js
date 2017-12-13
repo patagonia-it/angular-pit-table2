@@ -37,11 +37,18 @@ angular
 
       var getSort = function () {
         ctrl.utils.sort = [];
-        angular.forEach(ctrl.ptColumns, function (ptColumn) {
-          if (ptColumn.sortable && angular.isDefined(ptColumn.sort)) {
-            ctrl.utils.sort.push(ptColumn.id + ',' + ((ptColumn.sort === 'natural') ? 'asc' : ptColumn.sort));
+        for(var i = 0; i < ctrl.ptColumns.length; i++) {
+          if(ctrl.ptColumns[i].sortable && angular.isDefined(ctrl.ptColumns[i].sort)) {
+            if(!ctrl.ptParameters.multipleOrder){
+              if(ctrl.ptColumns[i].sort !== 'natural') {
+                ctrl.utils.sort.push(ctrl.ptColumns[i].id + ',' + ctrl.ptColumns[i].sort);
+                break;
+              }
+            }else{
+              ctrl.utils.sort.push(ctrl.ptColumns[i].id + ',' + ((ctrl.ptColumns[i].sort === 'natural') ? 'asc' : ctrl.ptColumns[i].sort));
+            }
           }
-        });
+        }  
       };
 
       var getData = function () {
@@ -95,19 +102,26 @@ angular
         if (angular.isUndefined(column.sort) || !ctrl.ptData.length) {
           return;
         }
-        angular.forEach(ctrl.ptColumns, function (ptColumn) {
-          if (column.id === ptColumn.id) {
-            if (ptColumn.sort === 'natural') {
-              ptColumn.sort = 'asc';
-            } else if (ptColumn.sort === 'asc') {
-              ptColumn.sort = 'desc';
-            } else {
-              ptColumn.sort = 'natural';
-            }
-            return;
-          }
-        });
 
+        for(var i = 0; i < ctrl.ptColumns.length; i++) {
+          if (column.id === ctrl.ptColumns[i].id) {
+            if (ctrl.ptColumns[i].sort === 'natural') {
+              ctrl.ptColumns[i].sort = 'asc';
+            } else if (ctrl.ptColumns[i].sort === 'asc') {
+              ctrl.ptColumns[i].sort = 'desc';
+            } else {
+              ctrl.ptColumns[i].sort = 'natural';
+            }
+
+            if(ctrl.ptParameters.multipleOrder) {
+              break;
+            }
+          } else {
+            if(!ctrl.ptParameters.multipleOrder) {
+              ctrl.ptColumns[i].sort = 'natural';
+            }
+          }
+        }
         ctrl.ptParameters.loadData();
       };
 
