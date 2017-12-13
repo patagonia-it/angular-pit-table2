@@ -24,7 +24,8 @@ angular
         },
         search: '',
         pageSizes: pitTable.pageSizes,
-        allSelected: false
+        allSelected: false,
+        searchTrigger: pitTable.searchTrigger
       };
 
       ctrl.$onInit = function () {

@@ -9,9 +9,16 @@ angular
       var ctrl = this;
 
       ctrl.search = function (text) {
-  		ctrl.ptableCtrl.utils.pagination.page = 0;
-        ctrl.ptableCtrl.utils.search = text;
-        ctrl.ptableCtrl.ptParameters.loadData();      	      
+      	if(text !== '' && text.length > ctrl.ptableCtrl.utils.searchTrigger) {
+      		ctrl.ptableCtrl.utils.pagination.page = 0;
+        	ctrl.ptableCtrl.utils.search = text;
+        	ctrl.ptableCtrl.ptParameters.loadData();
+      	}else if(text === '') {
+      		delete ctrl.filterModel;
+        	ctrl.ptableCtrl.utils.search = text;
+        	ctrl.ptableCtrl.ptParameters.loadData();
+      	}
+  		      	      
       };
 
       ctrl.removeSearch = function () {
