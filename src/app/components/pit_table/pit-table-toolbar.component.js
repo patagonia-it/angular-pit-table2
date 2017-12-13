@@ -26,13 +26,11 @@ angular
       ctrl.downloadCSV = function () {
         var object = {
           url: ENV.backendUrl + ctrl.ptableCtrl.ptParameters.url,
-          method: 'GET'
+          method: ctrl.ptableCtrl.ptParameters.method
         };
 
         object.params = {
-          sort: ctrl.ptableCtrl.utils.sort,
-          page: ctrl.ptableCtrl.utils.pagination.page,
-          size: ctrl.ptableCtrl.utils.pagination.size
+          sort: ctrl.ptableCtrl.utils.sort
         };
 
         if (ctrl.ptableCtrl.utils.search) {
@@ -41,6 +39,12 @@ angular
 
         if (ctrl.ptableCtrl.ptParameters.projection) {
           object.params = {projection: ctrl.ptableCtrl.ptParameters.projection};
+        }
+
+        if (!ctrl.ptableCtrl.ptParameters.inBody || ctrl.ptableCtrl.ptParameters.projection) {
+          angular.extend(object.params, ctrl.ptableCtrl.ptParameters.params);
+        } else {
+          object.data = ctrl.ptableCtrl.ptParameters.params;
         }
 
         return $http(object).then(function (response) {
