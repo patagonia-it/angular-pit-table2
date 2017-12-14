@@ -1,8 +1,10 @@
-<div ng-if="$ctrl.ptableCtrl.uiFramework === 'material'">
+<div ng-if="$ctrl.ptableCtrl.uiFramework === 'material'" >
   <md-card>
     <md-toolbar class="md-table-toolbar md-default">
       <div class="md-toolbar-tools">
-        <md-icon class="material-icons">search</md-icon>
+        <div id="loading-container">
+          <md-icon class="material-icons pt-search">search</md-icon>
+        </div>
         <form flex name="filter.form">
           <input ng-model="$ctrl.filterModel" ng-change="$ctrl.search($ctrl.filterModel)" class="md-block">
         </form>

@@ -9,14 +9,21 @@ angular
         PTColumnBuilder.newColumn('id'),
         PTColumnBuilder.newColumn('title').withName('Título').withOrder('asc').withClass('text-center'),
         PTColumnBuilder.newColumn('body').withName('Contenido').withOrder('asc'),
+        PTColumnBuilder.newColumn('body').withName('Contenido').withOrder('asc'),
+        PTColumnBuilder.newColumn('body').withName('Contenido').withOrder('asc'),
+        PTColumnBuilder.newColumn('body').withName('Contenido').withOrder('asc'),
         PTColumnBuilder.newColumn('userId').withName('Usuario'),
         PTColumnBuilder.newColumn('title').withName('test4'),
         PTColumnBuilder.newColumn('title').withName('test7'),
         PTColumnBuilder.newColumn('title').withName('test1'),
-        PTColumnBuilder.newColumn('title').withName('test6')
+        PTColumnBuilder.newColumn('title').withName('test6'),
+        PTColumnBuilder.newColumn('title').withName('test1'),
+        PTColumnBuilder.newColumn('title').withName('test1'),
+        PTColumnBuilder.newColumn('title').withName('test1'),
+        PTColumnBuilder.newColumn('title').withName('test1')
       ];
 
-      ctrl.ptParams = PTParamsBuilder.newParams().withUrl('/content').withMethod('GET', false);
+      ctrl.ptParams = PTParamsBuilder.newParams().withUrl('http://localhost:3000/cosntent').withMethod('GET', false);
 
       ctrl.selectedC = [];
       ctrl.unSelectedC = [];

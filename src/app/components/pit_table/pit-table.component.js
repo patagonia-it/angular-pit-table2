@@ -9,9 +9,10 @@ angular
       selectedC: '<',
       unSelectedC: '<'
     },
-    controller: function (pitTable, $log, $http, $loading) {
+    controller: function (pitTable, $log, $http, $rootScope, cfpLoadingBar) {
       var ctrl = this;
       ctrl.emptyTableText = pitTable.emptyTableText;
+      ctrl.loadingTableText = pitTable.loadingTableText;
       ctrl.uiFramework = pitTable.uiFramework;
       ctrl.isLoading = false;
       ctrl.utils = {
@@ -27,6 +28,14 @@ angular
         allSelected: false,
         searchTrigger: pitTable.searchTrigger
       };
+
+      $rootScope.$on('cfpLoadingBar:started', function() {
+        ctrl.isLoading = true;
+      });
+
+      $rootScope.$on('cfpLoadingBar:completed', function() {
+        ctrl.isLoading = false;   
+      });
 
       ctrl.$onInit = function () {
         ctrl.ptParameters.loadData = function () {
@@ -79,8 +88,7 @@ angular
           object.data = ctrl.ptParameters.params;
         }
 
-        $loading.start('data');
-        ctrl.isLoading = true;
+        cfpLoadingBar.start();
         $http(object).then(function (response) {
           var data = ctrl.ptParameters.projection ? response.data._embedded[ctrl.ptParameters.projection] : response.data.content;
           ctrl.ptData = data;
@@ -94,8 +102,7 @@ angular
         }, function () {
           $log.error('Ha ocurrido un error al intentar obtener la información.');
         }).finally(function () {
-          $loading.finish('data');
-          ctrl.isLoading = false;
+          cfpLoadingBar.complete();
         });
       };
 

@@ -16,23 +16,29 @@ ptable table > thead > tr > th > span {
 }
 
 /* LOADING */
-ptable > div[dw-loading] table.dw-loading-container {
-  display: none;
+#loading-container {
+  display: inline-block;
+  position: absolute;
+  height: 30px;
+  width: 30px;
 }
 
-ptable > div[dw-loading] div.dw-loading.dw-loading-overlay {
-  background: none;
+#loading-bar-spinner {
+  position: absolute;
+  display: table-cell;
+  top: 0;
+  left: 0;
 }
 
-ptable > div[dw-loading] div.dw-loading.dw-loading-overlay.dw-loading-active {
-  height: 150px;
+.pt-search {
+  position: absolute;
+  top: 2px;
+  left: 2px;
 }
 
-.dw-loading > .dw-loading-body > .dw-loading-text {
-  top: 30px;
-  font-weight: normal;
-  font-size: inherit;
-  text-shadow: none;
+#loading-bar-spinner .spinner-icon {
+  width: 30px;
+  height: 30px;
 }
 
 /* PIT TABLE NO FRAMEWORK */
