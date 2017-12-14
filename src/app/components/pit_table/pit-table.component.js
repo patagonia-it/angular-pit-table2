@@ -9,7 +9,7 @@ angular
       selectedC: '<',
       unSelectedC: '<'
     },
-    controller: function (pitTable, $log, $http, ENV, $loading) {
+    controller: function (pitTable, $log, $http, $loading) {
       var ctrl = this;
       ctrl.emptyTableText = pitTable.emptyTableText;
       ctrl.uiFramework = pitTable.uiFramework;
@@ -24,7 +24,8 @@ angular
         },
         search: '',
         pageSizes: pitTable.pageSizes,
-        allSelected: false
+        allSelected: false,
+        searchTrigger: pitTable.searchTrigger
       };
 
       ctrl.$onInit = function () {
@@ -54,7 +55,7 @@ angular
       var getData = function () {
         getSort();
         var object = {
-          url: ENV.backendUrl + ctrl.ptParameters.url,
+          url: ctrl.ptParameters.url,
           method: ctrl.ptParameters.method
         };
 

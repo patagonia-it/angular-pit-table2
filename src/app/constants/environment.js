@@ -10,8 +10,6 @@ angular.module('angular-pit-table')
     25,
     50,
     100
-  ]
-})
-.constant('ENV', {
-  backendUrl: 'http://localhost:3000'
+  ],
+  searchTrigger: 2
 });

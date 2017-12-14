@@ -7,7 +7,8 @@ angular
       emptyTableText: 'Ningún dato disponible en esta tabla.',
       loadingTableText: 'Cargando datos...',
       method: 'GET',
-      pageSizes: [10, 25, 50, 100]
+      pageSizes: [10, 25, 50, 100],
+      searchTrigger: 2
     };
     var newOptions = {};
 
@@ -35,6 +36,8 @@ angular
       this.pageSizes = angular.isArray(option.pageSizes) && option.pageSizes.every(function (size) {
         return angular.isNumber(size) && size > 0;
       }) ? option.pageSizes : defaultOptions.pageSizes;
+
+      this.searchTrigger = angular.isNumber(option.searchTrigger) ? option.searchTrigger : defaultOptions.searchTrigger;
     }
 
     this.$get = function () {
