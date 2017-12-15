@@ -33,8 +33,7 @@ angular
       ctrl.downloadCSV = function () {
         var object = {
           url: ctrl.ptableCtrl.ptParameters.url,
-          method: ctrl.ptableCtrl.ptParameters.method,
-          ignoreLoadingBar: true
+          method: ctrl.ptableCtrl.ptParameters.method
         };
 
         object.params = {
