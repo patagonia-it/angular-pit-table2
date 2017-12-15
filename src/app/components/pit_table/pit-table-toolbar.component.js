@@ -53,8 +53,8 @@ angular
         } else {
           object.data = ctrl.ptableCtrl.ptParameters.params;
         }
-
         return $http(object).then(function (response) {
+          setColumnsNameCSV(ctrl.ptableCtrl.ptParameters.projection ? response.data._embedded[ctrl.ptableCtrl.ptParameters.projection] : response.data.content);
           return ctrl.ptableCtrl.ptParameters.projection ? response.data._embedded[ctrl.ptableCtrl.ptParameters.projection] : response.data.content;
         }, function () {
           $log.error('Ha ocurrido un error al intentar obtener la información.');
@@ -64,5 +64,58 @@ angular
       ctrl.getCSVFilename = function() {
         return ctrl.ptableCtrl.ptParameters.tableName ? ctrl.ptableCtrl.ptParameters.tableName : 'export.csv';
       };
+
+      var setColumnsNameCSV = function(data) {
+        var fieldNames = [];
+        var fieldIds = [];
+
+        for(var j = 0; j < ctrl.ptableCtrl.ptColumns.length; j++){
+          if(!containsObject(ctrl.ptableCtrl.ptColumns[j], fieldNames, 'name', 'id')) {
+            if(ctrl.ptableCtrl.ptColumns[j].name) {
+              fieldNames.push({key: ctrl.ptableCtrl.ptColumns[j].id, value: ctrl.ptableCtrl.ptColumns[j].name});
+              if(fieldIds.indexOf(ctrl.ptableCtrl.ptColumns[j].id) === -1) fieldIds.push(ctrl.ptableCtrl.ptColumns[j].name);
+            }else{
+              fieldNames.push({key: ctrl.ptableCtrl.ptColumns[j].id, value: ctrl.ptableCtrl.ptColumns[j].id});
+              if(fieldIds.indexOf(ctrl.ptableCtrl.ptColumns[j].id) === -1) fieldIds.push(ctrl.ptableCtrl.ptColumns[j].id);
+            }
+          }
+        }
+
+        for(var i = 0; i < data.length; i++) {
+          var dataKeys = Object.keys(data[i]);
+          // crea campo con nombre de la columna y el campo con el id eliminado
+          for(var j = 0; j < fieldNames.length; j++) {
+            if(dataKeys.indexOf(fieldNames[j].key) >= 0){
+              data[i][fieldNames[j].value] = data[i][fieldNames[j].key];
+              if(fieldNames[j].key.toLowerCase() !== 'id'){
+                delete data[i][fieldNames[j].key];
+              }              
+            }else{
+              data[i][fieldNames[j].value] = '-';
+            }
+          } 
+
+          // elimina las columnas que no aparecen en la tabla
+          for(var k = 0; k < dataKeys.length; k++) {
+            if(fieldIds.indexOf(dataKeys[k]) === -1){
+              delete data[i][dataKeys[k]];
+            }
+          }        
+        }       
+
+      };
+
+      var containsObject = function(obj, data, property1, property2) {
+        if(obj && data.length && property1 && property2) {
+           for (var i = 0; i < data.length; i++) {
+            if(data[i][property1] === obj[property1] && data[i][property2] === obj[property2]) {
+              return true;
+            }
+          }
+        }      
+        
+        return false;
+      };
+
     }
   });
