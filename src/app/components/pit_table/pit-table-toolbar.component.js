@@ -70,7 +70,7 @@ angular
         var fieldIds = [];
 
         for(var j = 0; j < ctrl.ptableCtrl.ptColumns.length; j++){
-          if(!containsObject(ctrl.ptableCtrl.ptColumns[j], fieldNames, 'name', 'id')) {
+          if(!containsObject(ctrl.ptableCtrl.ptColumns[j], fieldNames, 'name', 'id') && ctrl.ptableCtrl.ptColumns[j].exportable) {
             if(ctrl.ptableCtrl.ptColumns[j].name) {
               fieldNames.push({key: ctrl.ptableCtrl.ptColumns[j].id, value: ctrl.ptableCtrl.ptColumns[j].name});
               if(fieldIds.indexOf(ctrl.ptableCtrl.ptColumns[j].id) === -1) fieldIds.push(ctrl.ptableCtrl.ptColumns[j].name);

@@ -43,6 +43,10 @@ function ptColumnBuilder() {
     notSortable: function () {
       this.sortable = false;
       return this;
+    },
+    notExportable: function () {
+      this.exportable = false;
+      return this;
     }
   };
 
@@ -57,6 +61,7 @@ function ptColumnBuilder() {
       column.name = id;
       column.sortable = true;
       column.sort = 'natural';
+      column.exportable = true;
 
       return column;
     },

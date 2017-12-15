@@ -7,7 +7,7 @@ angular
 
       ctrl.ptColumns = [
         PTColumnBuilder.newColumn('id'),
-        PTColumnBuilder.newColumn('title').withName('Título').withOrder('asc').withClass('text-center'),
+        PTColumnBuilder.newColumn('title').withName('Título').withOrder('asc').withClass('text-center').notExportable(),
         PTColumnBuilder.newColumn('body').withName('Contenido').withOrder('asc'),
         PTColumnBuilder.newColumn('lala').withName('LOLO').withOrder('asc'),
         PTColumnBuilder.newColumn('userId').withName('Usuario')
