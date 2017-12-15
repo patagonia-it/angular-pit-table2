@@ -23,7 +23,7 @@ ptable table > thead > tr > th > span {
   width: 30px;
 }
 
-#loading-bar-spinner {
+#loading-container #loading-bar-spinner {
   position: absolute;
   display: table-cell;
   top: 0;
@@ -36,7 +36,7 @@ ptable table > thead > tr > th > span {
   left: 2px;
 }
 
-#loading-bar-spinner .spinner-icon {
+#loading-container #loading-bar-spinner .spinner-icon {
   width: 30px;
   height: 30px;
 }
