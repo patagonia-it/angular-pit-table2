@@ -1,38 +1,40 @@
 <div  ng-class="{ 'md-table-container' : $ctrl.uiFramework === 'material', 'container-fluid': $ctrl.uiFramework === 'bootstrap', 'table-container': !$ctrl.uiFramework }">
   <pttoolbar is-loading="$ctrl.isLoading"></pttoolbar>
   <div ng-class="{'md-card-pitable' : $ctrl.uiFramework === 'material'}">
-    <table ng-class="{ 'table table-bordered table-striped table-responsive': $ctrl.uiFramework === 'bootstrap', 'md-table': $ctrl.uiFramework === 'material', 'md-row-select': $ctrl.uiFramework === 'material' && $ctrl.ptParams.selectId }">
-      <thead ng-class="{ 'md-head': $ctrl.uiFramework === 'material' }">
-        <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }">
-          <th ng-if="$ctrl.ptParameters.selectId && $ctrl.ptData.length" ng-class="{'th-checkbox' : $ctrl.uiFramework === 'bootstrap' || !$ctrl.uiFramework, 'padding-only-left' : $ctrl.uiFramework === 'material'}">
-            <ptcheckbox in-header="true"></ptcheckbox>
-          </th>
-          <th ng-repeat="column in $ctrl.ptColumns" class="{{ column.thClazz }}" ng-class="{ 'sortable': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'bootstrap', 'md-sort': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'material', 'md-column': $ctrl.uiFramework === 'material', 'md-active': $ctrl.uiFramework === 'material' && column.sortable && column.sort !== 'natural' }">
-            <span ng-click="$ctrl.columnOrder(column)">
-              {{ column.name }}
-              <fieldset ng-if="column.sortable && $ctrl.ptData.length">
-                <i class="pull-right fa " ng-class="$ctrl.thIconClass(column.sort)" ng-if="$ctrl.uiFramework === 'bootstrap'"></i>
-                <md-icon class="md-sort-icon" ng-class="$ctrl.thIconClass(column.sort)" ng-if="$ctrl.uiFramework === 'material'">arrow_upward</md-icon>
-                </fieldset>
-            </span>
-          </th>
-        </tr>
-      </thead>
-      <tbody ng-class="{ 'md-body': $ctrl.uiFramework === 'material' }">
-        <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }" ng-repeat="data in $ctrl.ptData" ng-if="!$ctrl.isLoading">
-          <td ng-if="$ctrl.ptParameters.selectId" class="td-checkbox" ng-class="{ 'md-cell md-checkbox-cell': $ctrl.uiFramework === 'material' }">
-            <ptcheckbox in-header="false" item="data"></ptcheckbox>
-          </td>
-          <td ng-repeat="column in $ctrl.ptColumns" ng-class="{ 'md-cell': $ctrl.uiFramework === 'material' }" class="{{ column.clazz }}">            
-            <span ng-if="!column.render">{{ data[column.id] }}</span>
-            <ptdrender ng-if="column.render" directive-name="column.render" pt-data="data"></ptdrender>
-          </td>
-        </tr>
-        <tr ng-if="$ctrl.isLoading || !$ctrl.ptData.length" ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }"  style="height: 90px;">
-          <td ng-class="{ 'md-cell': $ctrl.uiFramework === 'material' }" class="text-center" colspan="{{ $ctrl.ptColumns.length }}">{{ $ctrl.isLoading ? $ctrl.loadingTableText : $ctrl.emptyTableText }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div ng-class="{'md-table-container' : $ctrl.uiFramework === 'material'}">
+      <table ng-class="{ 'table table-bordered table-striped table-responsive': $ctrl.uiFramework === 'bootstrap', 'md-table': $ctrl.uiFramework === 'material', 'md-row-select': $ctrl.uiFramework === 'material' && $ctrl.ptParams.selectId }">
+        <thead ng-class="{ 'md-head': $ctrl.uiFramework === 'material' }">
+          <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }">
+            <th ng-if="$ctrl.ptParameters.selectId && $ctrl.ptData.length" ng-class="{'th-checkbox' : $ctrl.uiFramework === 'bootstrap' || !$ctrl.uiFramework, 'padding-only-left' : $ctrl.uiFramework === 'material'}">
+              <ptcheckbox in-header="true"></ptcheckbox>
+            </th>
+            <th ng-repeat="column in $ctrl.ptColumns" class="{{ column.thClazz }}" ng-class="{ 'sortable': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'bootstrap', 'md-sort': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'material', 'md-column': $ctrl.uiFramework === 'material', 'md-active': $ctrl.uiFramework === 'material' && column.sortable && column.sort !== 'natural' }">
+              <span ng-click="$ctrl.columnOrder(column)">
+                {{ column.name }}
+                <fieldset ng-if="column.sortable && $ctrl.ptData.length">
+                  <i class="pull-right fa " ng-class="$ctrl.thIconClass(column.sort)" ng-if="$ctrl.uiFramework === 'bootstrap'"></i>
+                  <md-icon class="md-sort-icon" ng-class="$ctrl.thIconClass(column.sort)" ng-if="$ctrl.uiFramework === 'material'">arrow_upward</md-icon>
+                  </fieldset>
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody ng-class="{ 'md-body': $ctrl.uiFramework === 'material' }">
+          <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }" ng-repeat="data in $ctrl.ptData" ng-if="!$ctrl.isLoading">
+            <td ng-if="$ctrl.ptParameters.selectId" class="td-checkbox" ng-class="{ 'md-cell md-checkbox-cell': $ctrl.uiFramework === 'material' }">
+              <ptcheckbox in-header="false" item="data"></ptcheckbox>
+            </td>
+            <td ng-repeat="column in $ctrl.ptColumns" ng-class="{ 'md-cell': $ctrl.uiFramework === 'material' }" class="{{ column.clazz }}">            
+              <span ng-if="!column.render">{{ data[column.id] }}</span>
+              <ptdrender ng-if="column.render" directive-name="column.render" pt-data="data"></ptdrender>
+            </td>
+          </tr>
+          <tr ng-if="$ctrl.isLoading || !$ctrl.ptData.length" ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }"  style="height: 90px;">
+            <td ng-class="{ 'md-cell': $ctrl.uiFramework === 'material' }" class="text-center" colspan="{{ $ctrl.ptColumns.length }}">{{ $ctrl.isLoading ? $ctrl.loadingTableText : $ctrl.emptyTableText }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <ptpage></ptpage>
   </div>
 </div>

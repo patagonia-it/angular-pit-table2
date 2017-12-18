@@ -567,3 +567,21 @@ md-select.md-select-paginator {
 .margin-0 {
   margin: 0;
 }
+
+.md-table-container {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+@media screen and (max-width: 580px) {
+  .md-table-pagination {
+    display: inherit;
+    float: right;
+    border-top: none;
+  }
+
+  .md-table-pagination > .last-item{
+    margin-left: -20px;
+  }
+}
