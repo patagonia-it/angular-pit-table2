@@ -1,5 +1,5 @@
 angular
-  .module('angular-pit-table', ['ngMaterial', 'ngCsv', 'angular-loading-bar'])
+  .module('angular-pit-table', ['ngMaterial', 'angular-loading-bar'])
   .config(function (pitTableProvider, ANGULAR_PIT_TABLE) {
     pitTableProvider.setOptions(ANGULAR_PIT_TABLE);
   })

@@ -27,7 +27,7 @@ angular
         }
         delete ctrl.filterModel;
         ctrl.ptableCtrl.utils.search = '';
-        ctrl.ptableCtrl.ptParameters.loadData();
+        ctrl.ptableCtrl.ptParameters.loadData();        
       };
 
       ctrl.downloadCSV = function () {
@@ -55,15 +55,29 @@ angular
           object.data = ctrl.ptableCtrl.ptParameters.params;
         }
         return $http(object).then(function (response) {
-          setColumnsNameCSV(ctrl.ptableCtrl.ptParameters.projection ? response.data._embedded[ctrl.ptableCtrl.ptParameters.projection] : response.data.content);
-          return ctrl.ptableCtrl.ptParameters.projection ? response.data._embedded[ctrl.ptableCtrl.ptParameters.projection] : response.data.content;
+          var data = ctrl.ptableCtrl.ptParameters.projection ? response.data._embedded[ctrl.ptableCtrl.ptParameters.projection] : response.data.content;
+          setColumnsNameCSV(data);
+
+          var ws = XLSX.utils.json_to_sheet(data);
+
+          var wb = XLSX.utils.book_new();
+
+          XLSX.utils.book_append_sheet(wb, ws);
+
+          var wbout = XLSX.write(wb, {bookType:'xlsx', type:'binary'});
+
+          function s2ab(s) {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i=0; i!=s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+          }
+          var timpestamp = new Date().getTime();
+          saveAs(new Blob([s2ab(wbout)],{type:'application/octet-stream'}), ctrl.ptableCtrl.ptParameters.name ? ctrl.ptableCtrl.ptParameters.name+'_'+timpestamp+'.xlsx' : 'export_'+timpestamp+'.xlsx');
+
         }, function () {
           $log.error('Ha ocurrido un error al intentar obtener la información.');
         });
-      };
-
-      ctrl.getCSVFilename = function() {
-        return ctrl.ptableCtrl.ptParameters.tableName ? ctrl.ptableCtrl.ptParameters.tableName : 'export.csv';
       };
 
       var setColumnsNameCSV = function(data) {
