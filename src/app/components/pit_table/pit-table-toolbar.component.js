@@ -80,6 +80,11 @@ angular
               if(fieldIds.indexOf(ctrl.ptableCtrl.ptColumns[j].id) === -1) fieldIds.push(ctrl.ptableCtrl.ptColumns[j].id);
             }
           }
+
+          if(ctrl.ptableCtrl.ptColumns[j].render && fieldNames.length > 0 && ctrl.ptableCtrl.ptColumns[j].exportable){
+            fieldNames[fieldNames.length - 1].render = ctrl.ptableCtrl.ptColumns[j].render;
+          }
+
         }
 
         for(var i = 0; i < data.length; i++) {
@@ -88,9 +93,19 @@ angular
           for(var j = 0; j < fieldNames.length; j++) {
             if(dataKeys.indexOf(fieldNames[j].key) >= 0){
               data[i][fieldNames[j].value] = data[i][fieldNames[j].key];
+              var tempData = angular.copy(data[i]);
               if(fieldNames[j].key.toLowerCase() !== 'id'){
                 delete data[i][fieldNames[j].key];
-              }              
+              }  
+              // campos null
+              if(!data[i][fieldNames[j].value]){
+                data[i][fieldNames[j].value] = '-';
+              }
+
+              if(fieldNames[j].render) {
+                data[i][fieldNames[j].value] = ctrl.ptableCtrl.ptColumns[j].renderFn(tempData);
+              }
+
             }else{
               data[i][fieldNames[j].value] = '-';
             }
@@ -102,8 +117,7 @@ angular
               delete data[i][dataKeys[k]];
             }
           }        
-        }       
-
+        }
       };
 
       var containsObject = function(obj, data, property1, property2) {

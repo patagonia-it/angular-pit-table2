@@ -10,6 +10,7 @@ function ptColumnBuilder() {
         throw new Error('render expected string but received ' + typeof render);
       }
       this.render = render;
+      this.renderFn = null;
       return this;
     },
     withClass: function (clazz) {

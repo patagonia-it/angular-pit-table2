@@ -26,7 +26,7 @@
             </td>
             <td ng-repeat="column in $ctrl.ptColumns" ng-class="{ 'md-cell': $ctrl.uiFramework === 'material' }" class="{{ column.clazz }}">            
               <span ng-if="!column.render">{{ data[column.id] }}</span>
-              <ptdrender ng-if="column.render" directive-name="column.render" pt-data="data"></ptdrender>
+              <ptdrender ng-if="column.render" directive-name="column.render" pt-data="data" render-fn="column.renderFn"></ptdrender>
             </td>
           </tr>
           <tr ng-if="$ctrl.isLoading || !$ctrl.ptData.length" ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }"  style="height: 90px;">
