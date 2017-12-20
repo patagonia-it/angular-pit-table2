@@ -54,6 +54,7 @@ angular
         } else {
           object.data = ctrl.ptableCtrl.ptParameters.params;
         }
+
         return $http(object).then(function (response) {
           var data = ctrl.ptableCtrl.ptParameters.projection ? response.data._embedded[ctrl.ptableCtrl.ptParameters.projection] : response.data.content;
           setColumnsNameCSV(data);
@@ -72,8 +73,8 @@ angular
             for (var i=0; i!=s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
             return buf;
           }
-          var timpestamp = new Date().getTime();
-          saveAs(new Blob([s2ab(wbout)],{type:'application/octet-stream'}), ctrl.ptableCtrl.ptParameters.name ? ctrl.ptableCtrl.ptParameters.name+'_'+timpestamp+'.xlsx' : 'export_'+timpestamp+'.xlsx');
+          var dateFormat = moment().format(ctrl.ptableCtrl.formatDateExport);
+          saveAs(new Blob([s2ab(wbout)],{type:'application/octet-stream'}), ctrl.ptableCtrl.ptParameters.name ? ctrl.ptableCtrl.ptParameters.name+dateFormat+'.xlsx' : 'export'+dateFormat+'.xlsx');
 
         }, function () {
           $log.error('Ha ocurrido un error al intentar obtener la información.');

@@ -6,6 +6,7 @@
     "loadingTableText": "Cargando datos...",
     "uiFramework": "material",
     "pageSizes": [10, 25, 50, 100],
-    "searchTrigger": 2
+    "searchTrigger": 2,
+    "formatDateExport": "_YYYY.MM.DD"
   }
 }

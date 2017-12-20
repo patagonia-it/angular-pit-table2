@@ -8,7 +8,8 @@ angular
       loadingTableText: 'Cargando datos...',
       method: 'GET',
       pageSizes: [10, 25, 50, 100],
-      searchTrigger: 2
+      searchTrigger: 2,
+      formatDateExport: '_DD/MM/YYYY'
     };
     var newOptions = {};
 
@@ -38,6 +39,8 @@ angular
       }) ? option.pageSizes : defaultOptions.pageSizes;
 
       this.searchTrigger = angular.isNumber(option.searchTrigger) ? option.searchTrigger : defaultOptions.searchTrigger;
+
+      this.formatDateExport = option.formatDateExport ? option.formatDateExport : defaultOptions.formatDateExport;
     }
 
     this.$get = function () {

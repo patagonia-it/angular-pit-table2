@@ -11,5 +11,6 @@ angular.module('angular-pit-table')
     50,
     100
   ],
-  searchTrigger: 2
+  searchTrigger: 2,
+  formatDateExport: '_YYYY.MM.DD'
 });

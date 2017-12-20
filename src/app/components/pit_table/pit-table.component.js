@@ -14,6 +14,7 @@ angular
       ctrl.emptyTableText = pitTable.emptyTableText;
       ctrl.loadingTableText = pitTable.loadingTableText;
       ctrl.uiFramework = pitTable.uiFramework;
+      ctrl.formatDateExport = pitTable.formatDateExport;
       ctrl.isLoading = false;
       ctrl.utils = {
         sort: [],
