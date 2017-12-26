@@ -48,6 +48,13 @@ function ptColumnBuilder() {
     notExportable: function () {
       this.exportable = false;
       return this;
+    },
+    withPriority: function (priority) {
+      if (!Number.isInteger(priority)) {
+        throw new Error('priority expected string but received ' + typeof priority);
+      }
+      this.priority = priority;
+      return this;
     }
   };
 
@@ -137,6 +144,10 @@ function ptParamsBuilder(pitTable) {
     noMultipleOrder: function () {
       this.multipleOrder = false;
       return this;
+    },
+    withResponive: function () {
+      this.responive = true;
+      return this;
     }
   };
 
@@ -147,6 +158,7 @@ function ptParamsBuilder(pitTable) {
       params.method = pitTable.method;
       params.inBody = false;
       params.multipleOrder = true;
+      params.responive = false;
 
       return params;
     },

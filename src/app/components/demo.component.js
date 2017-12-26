@@ -6,17 +6,22 @@ angular
       var ctrl = this;
 
       ctrl.ptColumns = [
-        PTColumnBuilder.newColumn('id'),
-        PTColumnBuilder.newColumn('title').withName('Título').withOrder('asc').withClass('text-center').notExportable(),
-        PTColumnBuilder.newColumn('body').withName('Contenido').withOrder('asc'),
-        PTColumnBuilder.newColumn('lala').withName('LOLO').withOrder('asc'),
-        PTColumnBuilder.newColumn('userId').withName('Usuario')
+        PTColumnBuilder.newColumn('title').withName('Contenido1').withOrder('asc').withPriority(3),
+        PTColumnBuilder.newColumn('title').withName('Contenido2').notSortable(),
+        PTColumnBuilder.newColumn('title').withName('Contenido3').withOrder('asc'),
+        PTColumnBuilder.newColumn('title').withName('Contenido4').withOrder('asc'),
+        PTColumnBuilder.newColumn('title').withName('Contenido5').withOrder('asc'),
+        PTColumnBuilder.newColumn('title').withName('Contenido6').withOrder('asc').withPriority(1),
+        PTColumnBuilder.newColumn('title').withName('Contenido7').withOrder('asc'),
+        PTColumnBuilder.newColumn('title').withName('Contenido8').withOrder('asc'),
+        PTColumnBuilder.newColumn('title').withName('Contenido9').withOrder('asc').withPriority(5),
+        PTColumnBuilder.newColumn('title').withName('Contenido10').withOrder('asc').withPriority(4),
+        PTColumnBuilder.newColumn('title').withName('Contenido11').withOrder('asc'),
+        PTColumnBuilder.newColumn('title').withName('Contenido12').withOrder('asc').withPriority(2)
 
       ];
 
-      console.log(ctrl.ptColumns);
-
-      ctrl.ptParams = PTParamsBuilder.newParams().withUrl('http://localhost:3000/content').withMethod('GET', false);
+      ctrl.ptParams = PTParamsBuilder.newParams().withUrl('http://localhost:3000/content').withMethod('GET', false).withResponive().withSelect('id');
 
       ctrl.selectedC = [];
       ctrl.unSelectedC = [];

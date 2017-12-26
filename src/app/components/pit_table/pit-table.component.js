@@ -9,8 +9,9 @@ angular
       selectedC: '<',
       unSelectedC: '<'
     },
-    controller: function (pitTable, $log, $http, $rootScope, cfpLoadingBar) {
-      var ctrl = this;
+    controller: function (pitTable, $log, $http, $rootScope, cfpLoadingBar, $filter, $scope, $element, $window) {
+      var ctrl = this;     
+
       ctrl.emptyTableText = pitTable.emptyTableText;
       ctrl.loadingTableText = pitTable.loadingTableText;
       ctrl.uiFramework = pitTable.uiFramework;
@@ -37,13 +38,89 @@ angular
       $rootScope.$on('cfpLoadingBar:completed', function() {
         ctrl.isLoading = false;   
       });
-
+                                                             
       ctrl.$onInit = function () {
+
+        var w = angular.element($window);
+
+        var initClass = function() {
+          var temp = $filter('orderBy')(ctrl.ptColumns, 'priority', false);
+
+          for (var i = 0; i < temp.length; i++) {
+            if(!ctrl.ptParameters.selectId){
+              if(temp[i].priority){
+                temp[i].classReponsive = 'c'+i;
+              }else{
+                if(3 <= i){
+                  temp[i].classReponsive = 'p'+i;
+                }
+              }
+            }else if(!ctrl.hideColumns){
+              if(temp[i].priority){
+                temp[i].classReponsive = 'cs'+i;
+              }else{
+                if(2 <= i){
+                  temp[i].classReponsive = 'ps'+i;
+                }
+              }
+            }else{
+              if(temp[i].priority){
+                temp[i].classReponsive = 'csm'+i;
+              }else{
+                if(1 <= i){
+                  temp[i].classReponsive = 'psm'+i;
+                }
+              }
+            }
+          }
+        };
+
+        var getWidth = function () {
+          return w[0].innerWidth;
+        };              
+
         ctrl.ptParameters.loadData = function () {
           getData();
         };
 
-        ctrl.ptParameters.loadData();
+        ctrl.ptParameters.loadData();     
+
+        $scope.$watch(getWidth, function (newValue, oldValue) {
+          if(newValue) {
+            getColumnHide();      
+            initClass();        
+          }          
+        }, true);
+
+        w.bind('resize', function () {
+          $scope.$apply();
+        });
+      };
+
+      var getColumnHide = function() {
+        ctrl.hideColumns = [];
+        angular.forEach(ctrl.ptColumns, function(value, key){
+          var elem = document.getElementById('th_'+key);
+          if(elem){
+            var display = $window.getComputedStyle(elem, null).getPropertyValue('display');
+            if(display === 'none'){
+              var index = ctrl.hideColumns.indexOf(key);
+              if(index === -1){
+                ctrl.hideColumns.push(key);
+              }               
+            }
+          }    
+        });
+
+        angular.forEach(ctrl.ptData, function(data, key){
+          if(ctrl.hideColumns.length === 0) {
+            data.expanded = false;
+          }else if(data.expanded){
+            ctrl.moreInfo(data);
+          }
+
+        });
+
       };
 
       var getSort = function () {
@@ -93,6 +170,7 @@ angular
         $http(object).then(function (response) {
           var data = ctrl.ptParameters.projection ? response.data._embedded[ctrl.ptParameters.projection] : response.data.content;
           ctrl.ptData = data;
+          getColumnHide();
           if (ctrl.ptParameters.selectId) {
             ctrl.ptDataTemp = angular.copy(data);
             initSelected(data);
@@ -108,7 +186,7 @@ angular
       };
 
       ctrl.columnOrder = function (column) {
-        if (angular.isUndefined(column.sort) || !ctrl.ptData.length) {
+        if (!column.sortable || angular.isUndefined(column.sort) || !ctrl.ptData.length) {
           return;
         }
 
@@ -145,6 +223,21 @@ angular
             'md-desc': sort === 'desc'
           };
         }
+      };
+
+      ctrl.moreInfo = function(data) {        
+        data.itemsHide = [];
+        angular.forEach(ctrl.ptColumns, function(column, columnKey){
+          angular.forEach(ctrl.hideColumns, function(v, k){
+            if(columnKey == v){
+              data.itemsHide.push({name: column.name, value: data[column.id], render: column.render});
+            }
+          });
+        });
+      };      
+
+      ctrl.openClose = function(data) {
+        data.expanded = !data.expanded ? true : false;
       };
 
       var initSelected = function (data) {
