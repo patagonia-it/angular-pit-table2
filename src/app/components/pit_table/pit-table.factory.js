@@ -145,8 +145,8 @@ function ptParamsBuilder(pitTable) {
       this.multipleOrder = false;
       return this;
     },
-    withResponive: function () {
-      this.responive = true;
+    withResponsive: function () {
+      this.responsive = true;
       return this;
     }
   };
@@ -158,7 +158,7 @@ function ptParamsBuilder(pitTable) {
       params.method = pitTable.method;
       params.inBody = false;
       params.multipleOrder = true;
-      params.responive = false;
+      params.responsive = false;
 
       return params;
     },
