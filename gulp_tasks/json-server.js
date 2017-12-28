@@ -7,7 +7,7 @@ gulp.task('json-server', startJsonServer);
 function startJsonServer() {
   	const server = jsonServer.create();
   	server.use(jsonServer.defaults());
-  	var router = jsonServer.router(conf.router);
+  	var router = jsonServer.router(conf.routers);
   	server.get('/content', function(req, res, next){
   		req.query['_page'] = setPageCustom(req.query['page']);
 		req.query['_limit'] = req.query['size'];
@@ -25,8 +25,8 @@ function startJsonServer() {
   	};
 
   	server.use(router);
-  	var listener = server.listen(conf.port, function () {
-    	console.log('JSON Server is running, port: ' + listener.address().port + ', router: ' + router.db.source);
+  	var listener = server.listen(conf, function () {
+    	console.log('JSON Server is running, host: ' + listener.address().address + ', port: ' + listener.address().port + ', router: ' + router.db.source);
   	});
 
   	var getParameterQuery = function(query, parameter) {

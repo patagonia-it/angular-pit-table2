@@ -43,38 +43,6 @@ angular
 
         var w = angular.element($window);
 
-        var initClass = function() {
-          var temp = $filter('orderBy')(ctrl.ptColumns, 'priority', false);
-
-          for (var i = 0; i < temp.length; i++) {
-            if(!ctrl.ptParameters.selectId){
-              if(temp[i].priority){
-                temp[i].classReponsive = 'c'+i;
-              }else{
-                if(3 <= i){
-                  temp[i].classReponsive = 'p'+i;
-                }
-              }
-            }else if(!ctrl.hideColumns){
-              if(temp[i].priority){
-                temp[i].classReponsive = 'cs'+i;
-              }else{
-                if(2 <= i){
-                  temp[i].classReponsive = 'ps'+i;
-                }
-              }
-            }else{
-              if(temp[i].priority){
-                temp[i].classReponsive = 'csm'+i;
-              }else{
-                if(1 <= i){
-                  temp[i].classReponsive = 'psm'+i;
-                }
-              }
-            }
-          }
-        };
-
         var getWidth = function () {
           return w[0].innerWidth;
         };              
@@ -95,6 +63,38 @@ angular
         w.bind('resize', function () {
           $scope.$apply();
         });
+      };
+
+      var initClass = function() {
+        var temp = $filter('orderBy')(ctrl.ptColumns, 'priority', false);
+
+        for (var i = 0; i < temp.length; i++) {
+          if(!ctrl.ptParameters.selectId){
+            if(temp[i].priority){
+              temp[i].classReponsive = 'c'+i;
+            }else{
+              if(3 <= i){
+                temp[i].classReponsive = 'p'+i;
+              }
+            }
+          }else if(!ctrl.hideColumns){
+            if(temp[i].priority){
+              temp[i].classReponsive = 'cs'+i;
+            }else{
+              if(2 <= i){
+                temp[i].classReponsive = 'ps'+i;
+              }
+            }
+          }else{
+            if(temp[i].priority){
+              temp[i].classReponsive = 'csm'+i;
+            }else{
+              if(1 <= i){
+                temp[i].classReponsive = 'psm'+i;
+              }
+            }
+          }
+        }
       };
 
       var getColumnHide = function() {

@@ -6,4 +6,9 @@ angular
   .config(function (cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeBar = false;
     cfpLoadingBarProvider.parentSelector = '#loading-container';
-  });
+  })
+  .run(function () {
+    Number.isInteger = Number.isInteger || function(value) {
+      return typeof value === 'number' && isFinite(value) && Math.floor(value) === value;
+    };
+  })

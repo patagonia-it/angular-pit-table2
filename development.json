@@ -13,7 +13,8 @@
     }
   },
   "jsonServer": {
+    "host": "10.15.100.4",
     "port": 3000,
-    "router": "db.json"
+    "routers": "db.json"
   }
 }

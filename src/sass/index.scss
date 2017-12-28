@@ -23,6 +23,32 @@ ptable table > thead > tr > th > span {
   width: 30px;
 }
 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  #loading-container {
+    top: 15px;
+  }
+
+  md-select.md-select-paginator .md-select-value {
+    top: 10px;
+  }
+
+  .item-md-table-paginator.have-md-select {
+    margin: 5px 0 15px 0 !important;
+  }
+
+  .pitable-btn-more-info {
+    top: 3px;
+  }
+}
+
+.pt-input-search::-ms-clear {
+  display: none;
+}
+
+.pt-form-search {
+  padding-left: 5px;
+}
+
 #loading-container #loading-bar-spinner {
   position: absolute;
   display: table-cell;
@@ -531,12 +557,11 @@ input.cursor-pointer {
 
 .text-rows-per-page {
   display: inline-table;
-  padding-right: 15px;
 }
 
 md-select.md-select-paginator {
   display: inline-table;
-  margin: initial;
+  margin: auto;
 }
 
 .md-table-pagination {
@@ -560,7 +585,7 @@ md-select.md-select-paginator {
 }
 
 .item-md-table-paginator {
-  padding: 0 10px 0 10px;
+  padding: 0 15px 0 15px;
   margin: 15px 0 15px 0;
 }
 
@@ -584,6 +609,7 @@ md-select.md-select-paginator {
   .md-table-pagination > .last-item{
     margin-left: -20px;
   }
+  
 }
 
 @media screen and (max-width: 600px) {

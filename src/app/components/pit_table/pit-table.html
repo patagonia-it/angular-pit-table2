@@ -5,8 +5,8 @@
       <table ng-class="{ 'table table-bordered table-striped table-responsive': $ctrl.uiFramework === 'bootstrap', 'md-table': $ctrl.uiFramework === 'material', 'md-row-select': $ctrl.uiFramework === 'material' && $ctrl.ptParams.selectId, 'pit-table-responsive' : $ctrl.ptParameters.responsive }">
         <thead ng-class="{ 'md-head': $ctrl.uiFramework === 'material' }">
           <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }">
-            <th style="width: 60px;" ng-if="$ctrl.ptParameters.selectId && $ctrl.ptData.length" ng-class="{'th-checkbox' : $ctrl.uiFramework === 'bootstrap' || !$ctrl.uiFramework, 'padding-only-left' : $ctrl.uiFramework === 'material'}">
-              <ptcheckbox in-header="true"></ptcheckbox>
+            <th style="width: 60px;" ng-if="$ctrl.ptParameters.selectId" ng-class="{'th-checkbox' : $ctrl.uiFramework === 'bootstrap' || !$ctrl.uiFramework, 'padding-only-left' : $ctrl.uiFramework === 'material'}">
+              <ptcheckbox ng-if="$ctrl.ptData.length" in-header="true"></ptcheckbox>
             </th>
             <th style="width: 70px;" ng-if="$ctrl.hideColumns.length > 0">
               
@@ -25,10 +25,10 @@
         <tbody ng-class="{ 'md-body': $ctrl.uiFramework === 'material' }">
           <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }" ng-repeat-start="data in $ctrl.ptData" ng-if="!$ctrl.isLoading">
             <td ng-if="$ctrl.ptParameters.selectId" class="td-checkbox" ng-class="{ 'md-cell md-checkbox-cell': $ctrl.uiFramework === 'material', 'no-border-bottom' : data.expanded &&  $ctrl.uiFramework === 'material'}">
-              <ptcheckbox in-header="false" item="data"></ptcheckbox>
+              <ptcheckbox ng-if="$ctrl.ptData.length" in-header="false" item="data"></ptcheckbox>
             </td>
             <td ng-if="$ctrl.hideColumns.length > 0" ng-class="{ 'md-cell md-checkbox-cell': $ctrl.uiFramework === 'material', 'no-border-bottom' : data.expanded &&  $ctrl.uiFramework === 'material' }">
-                <button class="md-icon-button md-button md-ink-ripple" type="button" ng-click="$ctrl.moreInfo(data); $ctrl.openClose(data);">
+                <button class="md-icon-button md-button md-ink-ripple pitable-btn-more-info" type="button" ng-click="$ctrl.moreInfo(data); $ctrl.openClose(data);">
                   <md-icon class="material-icons" ng-if="!data.expanded"> add_circle </md-icon>
                   <md-icon class="material-icons" ng-if="data.expanded"> remove_circle </md-icon>
                 </button>
@@ -49,7 +49,7 @@
             </td>
           </tr>
           <tr ng-if="$ctrl.isLoading || !$ctrl.ptData.length" ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }"  style="height: 90px;">
-            <td ng-class="{ 'md-cell': $ctrl.uiFramework === 'material' }" class="text-center" colspan="{{ $ctrl.ptColumns.length }}">{{ $ctrl.isLoading ? $ctrl.loadingTableText : $ctrl.emptyTableText }}</td>
+            <td ng-class="{ 'md-cell': $ctrl.uiFramework === 'material' }" class="text-center" colspan="{{ $ctrl.ptParameters.selectId ? ($ctrl.ptColumns.length - ($ctrl.hideColumns.length - 2 )) : ($ctrl.ptColumns.length - ($ctrl.hideColumns.length - 1)) }}">{{ $ctrl.isLoading ? $ctrl.loadingTableText : $ctrl.emptyTableText }}</td>
           </tr>
         </tbody>
       </table>

@@ -5,8 +5,8 @@
         <div id="loading-container">
           <md-icon class="material-icons pt-search">search</md-icon>
         </div>
-        <form flex name="filter.form">
-          <input ng-model="$ctrl.filterModel" ng-change="$ctrl.search($ctrl.filterModel)" class="md-block">
+        <form flex name="filter.form" class="pt-form-search">
+          <input ng-model="$ctrl.filterModel" ng-change="$ctrl.search($ctrl.filterModel)" class="md-block pt-input-search">
         </form>
         <button class="md-icon-button md-button md-ink-ripple" type="button" ng-click="$ctrl.removeSearch()" ng-if="$ctrl.filterModel">
           <md-icon class="material-icons">close</md-icon>

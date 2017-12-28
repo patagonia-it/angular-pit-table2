@@ -7,13 +7,13 @@
   </div>
 </div>
 <div ng-if="$ctrl.ptableCtrl.uiFramework === 'material'" class="md-table-pagination">
-	<div class="item-md-table-paginator">
+	<div class="item-md-table-paginator have-md-select">
 		<div class="text-rows-per-page">Página:</div>
 		<md-select class="md-table-select md-select-paginator" ng-model="$ctrl.ptableCtrl.utils.pagination.page" ng-change="$ctrl.goToPage()">
 			<md-option ng-repeat="page in $ctrl.getSelectPages()" ng-value="page">{{ page + 1 }}</md-option>
 		</md-select>
 	</div>
-	<div class="item-md-table-paginator">
+	<div class="item-md-table-paginator have-md-select">
 		<ptpsize></ptpsize>
 	</div>
 	<div class="item-md-table-paginator">
