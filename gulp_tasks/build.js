@@ -14,7 +14,12 @@ const ngAnnotate = require('gulp-ng-annotate');
 
 const conf = require('../conf/gulp.conf');
 
-gulp.task('build', build);
+gulp.task('build', gulp.parallel(build, fonts));
+
+function fonts() {
+  return gulp.src(conf.path.tmp('fonts/*'))
+    .pipe(gulp.dest(conf.path.dist('fonts')));
+}
 
 function build() {
   const partialsInjectFile = gulp.src(conf.path.tmp('templateCacheHtml.js'), {read: false});

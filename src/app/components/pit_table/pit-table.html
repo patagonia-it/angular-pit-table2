@@ -11,7 +11,7 @@
             <th style="width: 70px;" ng-if="$ctrl.hideColumns.length > 0">
               
             </th>
-            <th id="{{ 'th_'+$index }}" ng-repeat="column in $ctrl.ptColumns" class="{{ column.classReponsive ? column.thClazz+' '+column.classReponsive : column.thClazz}}" ng-class="{ 'sortable': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'bootstrap', 'md-sort': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'material', 'md-column': $ctrl.uiFramework === 'material', 'md-active': $ctrl.uiFramework === 'material' && column.sortable && column.sort !== 'natural' }">
+            <th style="width:100%" id="{{ 'th_'+$index }}" ng-repeat="column in $ctrl.ptColumns" class="{{ column.classReponsive ? column.thClazz+' '+column.classReponsive : column.thClazz}}" ng-class="{ 'sortable': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'bootstrap', 'md-sort': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'material', 'md-column': $ctrl.uiFramework === 'material', 'md-active': $ctrl.uiFramework === 'material' && column.sortable && column.sort !== 'natural' }">
               <span ng-click="$ctrl.columnOrder(column)" class="th-span-format">
                 {{ column.name }}
                 <fieldset ng-if="column.sortable && $ctrl.ptData.length" class="th-span-fielset">

@@ -21,7 +21,7 @@ angular
 
       ];
 
-      ctrl.ptParams = PTParamsBuilder.newParams().withUrl('http://10.15.100.4:3000/content').withMethod('GET', false).withResponsive().withSelect('id');
+      ctrl.ptParams = PTParamsBuilder.newParams().withUrl('http://10.15.100.6:3000/content').withMethod('GET', false).withResponsive().withSelect('id');
 
       ctrl.selectedC = [];
       ctrl.unSelectedC = [];

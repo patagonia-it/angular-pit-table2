@@ -9,7 +9,7 @@ angular
       selectedC: '<',
       unSelectedC: '<'
     },
-    controller: function (pitTable, $log, $http, $rootScope, cfpLoadingBar, $filter, $scope, $element, $window) {
+    controller: function (pitTable, $log, $http, $rootScope, cfpLoadingBar, $filter, $scope, $window, $timeout) {
       var ctrl = this;     
 
       ctrl.emptyTableText = pitTable.emptyTableText;
@@ -61,7 +61,7 @@ angular
         }, true);
 
         w.bind('resize', function () {
-          $scope.$apply();
+           $timeout(function(){}, 100);          
         });
       };
 
