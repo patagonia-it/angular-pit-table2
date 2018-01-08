@@ -1,0 +1,50 @@
+<div ng-if="$ctrl.ptableCtrl.uiFramework === 'material'" >
+  <md-card>
+    <md-toolbar class="md-table-toolbar md-default">
+      <div class="md-toolbar-tools">
+        <div id="loading-container">
+          <md-icon class="material-icons pt-search">search</md-icon>
+        </div>
+        <form flex name="filter.form" class="pt-form-search">
+          <input ng-model="$ctrl.filterModel" ng-change="$ctrl.search($ctrl.filterModel)" class="md-block pt-input-search">
+        </form>
+        <button class="md-icon-button md-button md-ink-ripple" type="button" ng-click="$ctrl.removeSearch()" ng-if="$ctrl.filterModel">
+          <md-icon class="material-icons">close</md-icon>
+        </button>
+        <button class="md-icon-button md-button md-ink-ripple" type="button" ng-click="$ctrl.downloadCSV()">
+          <md-icon class="material-icons">file_download</md-icon>
+        </button>
+      </div>
+    </md-toolbar>
+  </md-card>
+</div>
+
+<div ng-if="$ctrl.ptableCtrl.uiFramework === 'bootstrap'" class="row">
+  <form class="form-inline">
+    <div class="col-xs-12 col-sm-6">
+      <ptpsize></ptpsize>
+    </div>
+    <div class="col-xs-12 col-sm-6 search-control">
+      <label for="search">Buscar</label>
+      <div class="input-group">
+        <input class="form-control" name="search" id="search" ng-model="$ctrl.filterModel" ng-change="$ctrl.search($ctrl.filterModel)">
+        <span class="input-group-addon input-group-addon-custom">
+            <i class="fa fa-close" ng-click="$ctrl.removeSearch()"></i>
+        </span>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div ng-if="!$ctrl.ptableCtrl.uiFramework" class="height-no-bootstrap">
+  <div class="size-control">
+    <ptpsize></ptpsize>
+  </div>
+  <div class="search-control">
+    <label>
+      Buscar:
+      <input class="input-search" ng-model="$ctrl.filterModel" ng-change="$ctrl.search($ctrl.filterModel)">
+      <button class="close-icon" type="reset" ng-click="$ctrl.removeSearch()" ng-if="$ctrl.filterModel"></button>
+    </label>
+  </div>
+</div>

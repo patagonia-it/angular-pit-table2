@@ -1,0 +1,21 @@
+<div ng-if="$ctrl.ptableCtrl.uiFramework === 'material'">	
+	<div class="text-rows-per-page">Filas por página:</div>
+	<md-select class="md-table-select md-select-paginator" ng-model="$ctrl.size" ng-change="$ctrl.selectSize($ctrl.size)">
+		<md-option ng-repeat="size in $ctrl.pageSizes" ng-value="size">{{ size }}</md-option>
+	</md-select>
+</div>
+
+<div ng-if="$ctrl.ptableCtrl.uiFramework === 'bootstrap'">
+	<label for="size">Mostrar</label>
+	<div class="form-group">
+		<select class="form-control" name="size" id="size" ng-model="$ctrl.size" ng-change="$ctrl.selectSize($ctrl.size)" ng-options="size for size in $ctrl.pageSizes track by size"></select>
+	</div>
+</div>
+
+<div ng-if="!$ctrl.ptableCtrl.uiFramework">
+	<label>
+      Mostrar
+      <select ng-model="$ctrl.size" ng-change="$ctrl.selectSize($ctrl.size)" ng-options="size for size in $ctrl.pageSizes track by size"></select>
+      entradas
+    </label>
+</div>
