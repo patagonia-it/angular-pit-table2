@@ -33,7 +33,7 @@ angular
             if (selected) {
               indexAdd = ctrl.ptableCtrl.selectedC.indexOf(value[ctrl.ptableCtrl.ptParameters.selectId]);
               if (!value.isCheck && indexAdd < 0) {
-                ctrl.ptableCtrl.selectedC.push(value[ctrl.ptableCtrl.ptParameters.selectId.selectId]);
+                ctrl.ptableCtrl.selectedC.push(value[ctrl.ptableCtrl.ptParameters.selectId]);
               }
 
               indexRemove = ctrl.ptableCtrl.unSelectedC.indexOf(value[ctrl.ptableCtrl.ptParameters.selectId]);
