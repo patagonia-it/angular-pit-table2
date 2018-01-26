@@ -154,7 +154,7 @@ ptable > div.md-table-container table.md-table th.md-column {
   color: rgba(0, 0, 0, 0.54);
   font-size: 12px;
   font-weight: bold;
-  white-space: nowrap;
+  white-space: unset;
 }
 ptable > div.md-table-container table.md-table th.md-column fieldset {
   display: inline-block;
@@ -182,12 +182,7 @@ ptable > div.md-table-container table.md-table th.md-column md-icon.md-sort-icon
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-ptable > div.md-table-container table.md-table th.md-column md-icon:not(:first-child) {
-  margin-left: 8px;
-}
-ptable > div.md-table-container table.md-table th.md-column md-icon:not(:last-child) {
-  margin-right: 8px;
-}
+
 ptable > div.md-table-container table.md-table th.md-column.md-active,
 ptable > div.md-table-container table.md-table th.md-column.md-active md-icon {
   color: rgba(0, 0, 0, 0.87);
@@ -1918,4 +1913,30 @@ ptable > div.md-table-container table.md-table {
 
 .no-border-bottom {
   border-bottom-style: none;
+}
+
+.th-ptcheckbox { 
+  width: 65px !important;
+}
+
+.th-more-info { 
+  width: 70px !important;
+}
+
+ptable > div.md-table-container table.md-table th.md-column md-icon.md-sort-icon.inactive {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+ptable > div.md-table-container table.md-table th.md-column > span.th-content {
+  display: table-row;
+}
+
+ptable > div.md-table-container table.md-table th.md-column h6.span-title {
+  display: table-cell; 
+  vertical-align: middle;
+  /* word-break: break-word; */
+}
+
+.display-Table-Cell {
+  display: table-cell; 
 }

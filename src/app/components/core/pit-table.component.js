@@ -63,6 +63,11 @@ angular
         w.bind('resize', function () {
            $timeout(function(){}, 100);          
         });
+
+        if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+            ctrl.isBrowserIEorEdge = true;
+        }
+        
       };
 
       var initClass = function() {
@@ -214,13 +219,10 @@ angular
 
       ctrl.thIconClass = function (sort) {
         if (angular.isDefined(sort)) {
-          return ctrl.uiFramework === 'bootstrap' ? {
+          return {
             'fa-sort': sort === 'natural',
             'fa-sort-desc': sort === 'desc',
             'fa-sort-asc': sort === 'asc'
-          } : {
-            'md-asc': sort === 'natural' || sort === 'asc',
-            'md-desc': sort === 'desc'
           };
         }
       };

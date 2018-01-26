@@ -5,18 +5,21 @@
       <table ng-class="{ 'table table-bordered table-striped table-responsive': $ctrl.uiFramework === 'bootstrap', 'md-table': $ctrl.uiFramework === 'material', 'md-row-select': $ctrl.uiFramework === 'material' && $ctrl.ptParams.selectId, 'pit-table-responsive' : $ctrl.ptParameters.responsive }">
         <thead ng-class="{ 'md-head': $ctrl.uiFramework === 'material' }">
           <tr ng-class="{ 'md-row': $ctrl.uiFramework === 'material' }">
-            <th style="width: 60px;" ng-if="$ctrl.ptParameters.selectId" ng-class="{'th-checkbox' : $ctrl.uiFramework === 'bootstrap' || !$ctrl.uiFramework, 'padding-only-left' : $ctrl.uiFramework === 'material'}">
+            <th class="th-ptcheckbox" ng-if="$ctrl.ptParameters.selectId" ng-class="{'th-checkbox' : $ctrl.uiFramework === 'bootstrap' || !$ctrl.uiFramework, 'padding-only-left' : $ctrl.uiFramework === 'material'}">
               <ptcheckbox ng-if="$ctrl.ptData.length" in-header="true"></ptcheckbox>
             </th>
-            <th style="width: 70px;" ng-if="$ctrl.hideColumns.length > 0">
+            <th class="th-more-info" ng-if="$ctrl.hideColumns.length > 0">
               
             </th>
-            <th style="width:100%" id="{{ 'th_'+$index }}" ng-repeat="column in $ctrl.ptColumns" class="{{ column.classReponsive ? column.thClazz+' '+column.classReponsive : column.thClazz}}" ng-class="{ 'sortable': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'bootstrap', 'md-sort': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'material', 'md-column': $ctrl.uiFramework === 'material', 'md-active': $ctrl.uiFramework === 'material' && column.sortable && column.sort !== 'natural' }">
-              <span ng-click="$ctrl.columnOrder(column)" class="th-span-format">
-                {{ column.name }}
+            <th id="{{ 'th_'+$index }}" ng-repeat="column in $ctrl.ptColumns" class="{{ column.classReponsive ? column.thClazz+' '+column.classReponsive : column.thClazz}}" ng-class="{ 'sortable': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'bootstrap', 'md-sort': column.sortable && $ctrl.ptData.length && $ctrl.uiFramework === 'material', 'md-column': $ctrl.uiFramework === 'material', 'md-active': $ctrl.uiFramework === 'material' && column.sortable && column.sort !== 'natural', 'tableLayout-fixed' : $ctrl.isBrowserIEorEdge }">
+              <span class="th-content" ng-click="$ctrl.columnOrder(column)">
+                <h6 class="span-title">
+                  {{ column.name }}
+                </h6>
                 <fieldset ng-if="column.sortable && $ctrl.ptData.length" class="th-span-fielset">
                   <i class="pull-right fa " ng-class="$ctrl.thIconClass(column.sort)" ng-if="$ctrl.uiFramework === 'bootstrap'"></i>
-                  <md-icon class="md-sort-icon" ng-class="$ctrl.thIconClass(column.sort)" ng-if="$ctrl.uiFramework === 'material'">arrow_upward</md-icon>
+                  <md-icon class="display-Table-Cell md-sort-icon md-asc" ng-class="{'inactive' : column.sort === 'desc'}" ng-if="$ctrl.uiFramework === 'material'">keyboard_arrow_up</md-icon>
+                  <md-icon style="display: block;" class="display-Table-Cell md-sort-icon md-dsc" ng-class="{'inactive' : column.sort === 'asc'}" ng-if="$ctrl.uiFramework === 'material'">keyboard_arrow_down</md-icon>
                   </fieldset>
               </span>
             </th>
